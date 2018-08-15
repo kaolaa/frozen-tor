@@ -44,10 +44,11 @@ app.use(function(req,res,next){
 
 });
 
+//index route
 app.get('/', (req, res) => {
-  res.send('It Works!');
+  const title = 'Hello '
+  res.render('index', { title: title }); //didn't really use it <yet>
 });
-
 
 const port = process.env.PORT || 5000;
 
