@@ -6,8 +6,14 @@ const session = require('express-session');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-
+const passport = require('passport');
 const app = express();
+
+// Passport config 
+require('./config/passport')(passport);
+
+//Load routes
+const auth = require('./routes/auth');
 
 //map global promise - get rid of warning
 mongoose.promise = global.promise;
@@ -49,6 +55,9 @@ app.get('/', (req, res) => {
   const title = 'Hello '
   res.render('index', { title: title }); //didn't really use it <yet>
 });
+
+//Use Routes 
+app.use('/auth', auth); 
 
 const port = process.env.PORT || 5000;
 
