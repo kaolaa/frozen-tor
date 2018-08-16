@@ -9,14 +9,25 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const app = express();
 
+// load user model
+require('./models/User');
+ 
 // Passport config 
 require('./config/passport')(passport);
 
 //Load routes
 const auth = require('./routes/auth');
 
+//Load Keys
+const key = require('./config/keys');
+
 //map global promise - get rid of warning
 mongoose.promise = global.promise;
+
+// Mongoose Connect
+mongoose.connect(key.mongoURI)
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
 
 //Handlebars Middleware 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
