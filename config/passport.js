@@ -17,13 +17,14 @@ module.exports = function(passport){
       // console.log(accessToken);
       // console.log(profile);
 
-      const image = profile.photos[0].value.substring(0,profile.photos[0].value.indexof('?'));
+      const image = profile.photos[0].value.substring(0,profile.photos[0].value.indexOf('?'));
+      
 
       const newUser = {
         googleID: profile.id,
-        firstName: profile.name.givenName,
-        lastName: profile.name.familyName,
-        email: profile.email[0].value,
+        FirstName: profile.name.givenName,
+        LastName: profile.name.familyName,
+        email: profile.emails[0].value,
         image: image
       }
 
@@ -41,8 +42,16 @@ module.exports = function(passport){
           .then(user => done(null,user));
         }
       })
-    } )
-  )
+    })
+  );
+
+  passport.serializeUser((user,done)=>{
+    done(null,user.id);
+  });
+
+  passport.deserializeUser((id,done)=>{
+    User.findById(id).then(user => done(null,user));
+  });
 }
 
 //

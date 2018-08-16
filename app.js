@@ -7,11 +7,13 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 // load user model
 require('./models/User');
  
+
 // Passport config 
 require('./config/passport')(passport);
 
@@ -57,9 +59,21 @@ app.use(function(req,res,next){
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.user = req.user || null ;
   next();
-
 });
+
+app.use(cookieParser());
+// Express session middleware
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false 
+}));
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //index route
 app.get('/', (req, res) => {
@@ -69,6 +83,8 @@ app.get('/', (req, res) => {
 
 //Use Routes 
 app.use('/auth', auth); 
+
+
 
 const port = process.env.PORT || 5000;
 
