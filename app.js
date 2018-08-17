@@ -95,9 +95,7 @@ app.get('/about', (req, res) => {
 app.get('/users/test', (req, res) => {
   res.render('users/test');
 });
-app.get('/test', (req, res) => {
-  res.render('test');
-});
+
 
 
 

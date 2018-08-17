@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   googleID: {
     type: String,
-    required: true
   },
   email: {
     type: String,
@@ -15,6 +14,9 @@ const UserSchema = new Schema({
     type: String,
   },
   LastName: {
+    type: String,
+  },
+  password: {
     type: String,
   },
   image: {

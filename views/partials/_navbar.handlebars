@@ -5,25 +5,25 @@
         <div class="top-header-block-social fl e-mail">
 
           <a class="color-dark-2-light" href="tel:">
-            <img src="img/facebook.png" alt="">
+            <img src="/img/facebook.png" alt="">
           </a>
           <a class="color-dark-2-light" href="tel:">
-            <img src="img/instagram.png" alt="">
+            <img src="/img/instagram.png" alt="">
           </a>
         </div>
 
         <div class="top-header-block fl e-mail">
-          <img src="img/phone_icon_blue.png" alt="">
+          <img src="/img/phone_icon_blue.png" alt="">
           <a class="color-dark-2-light" href="tel:">contact with us: 0369 09 01</a>
         </div>
         <div class="top-header-block fl phone">
-          <img src="img/mail_icon_blue.png" alt="">
+          <img src="/img/mail_icon_blue.png" alt="">
           <a class="color-dark-2-light" href="mailto:letstravel@letstravel.com">e-mail: let’stravel@let’stravel.com</a>
         </div>
         <div class="fr">
 
           <div class="top-header-block fl search">
-            <img class="search-img" src="img/search_icon_small_blue.png" alt="">
+            <img class="search-img" src="/img/search_icon_small_blue.png" alt="">
             <div class="search-popup">
               <div class="s_close"></div>
               <div class="container">
@@ -99,8 +99,8 @@
           </div> --}}
           {{#if user}}
           <div class="top-header-block fl card">
-            <img class="profile-icon" src="img/user.png" alt="">
-            <a class="profile-link color-dark-2-light" href="#">Profile</a>
+            <img class="profile-icon" src="/img/user.png" alt="">
+            <a class="profile-link color-dark-2-light" href="#">{{user.FirstName}}</a>
             <div class="profile-popup">
               <div class="profile_close"></div>
               <div class="profile-title ">
@@ -127,7 +127,7 @@
                 <p class="color-dark-2-light">Et suivez vos réservations</p>
               </div>
 
-              <a href="#" class="c-button b-40 full color-blue-2 brd-grey hv-blue-2">
+              <a href="/auth/signup" class="c-button b-40 full color-blue-2 brd-grey hv-blue-2">
                 <span>S'inscrire</span>
               </a>
               <p class="profile-title color-dark-2-light ">ou</p>
@@ -137,8 +137,8 @@
             </div>
           </div>
           <div class="top-header-block fl e-mail">
-          <img src="img/user.png" alt="">
-          <a class="color-dark-2-light" href="auth/mail">Se connecter</a>
+          <img src="/img/user.png" alt="">
+          <a class="color-dark-2-light" href="/auth/mail">Se connecter</a>
         </div>
           
           {{/if}}
