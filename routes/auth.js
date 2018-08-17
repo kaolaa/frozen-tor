@@ -7,7 +7,7 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
     // Successful authentication, redirect home.
-    res.redirect('/dashboard');
+    res.redirect('/');
   });
 router.get('/verify', (req,res)=>{
   if(req.user){
@@ -20,6 +20,10 @@ router.get('/verify', (req,res)=>{
 router.get('/logout', (req,res)=>{
  req.logout();
  res.redirect('/');
+});
+
+router.get('/mail', (req, res) => {
+  res.render('auth/mail', { layout: true }); 
 });
 
 

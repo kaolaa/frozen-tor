@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const app = express();
+const debug = require('debug')('expressdebug:server');
 
 // load user model
 require('./models/User');
@@ -59,7 +60,6 @@ app.use(function(req,res,next){
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
-  res.locals.user = req.user || null ;
   next();
 });
 
@@ -75,6 +75,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req,res,next){
+  res.locals.user = req.user || null ;
+  next();
+});
+
 //index route
 app.get('/', (req, res) => {
   const title = 'Hello '
@@ -83,6 +88,16 @@ app.get('/', (req, res) => {
 
 //Use Routes 
 app.use('/auth', auth); 
+
+app.get('/about', (req, res) => {
+  res.render('About');
+});
+app.get('/users/test', (req, res) => {
+  res.render('users/test');
+});
+app.get('/test', (req, res) => {
+  res.render('test');
+});
 
 
 
