@@ -55,11 +55,11 @@ router.post('/signup', (req, res) => {
   let errors = [];
 
   if (req.body.password != req.body.password2) {
-    errors.push({ text: 'Passwords do not match' });
+    errors.push({ text: 'Les mots de passe saisis ne sont pas identiques' });
   }
 
   if (req.body.password.length < 4) {
-    errors.push({ text: 'Password must be at least 4 characters' });
+    errors.push({ text: 'Le mot de passe doit contenir aux moins 4 caractères ' });
   }
 
   if (errors.length > 0) {
@@ -74,7 +74,7 @@ router.post('/signup', (req, res) => {
     User.findOne({ email: req.body.email })
       .then(user => {
         if (user) {
-          req.flash('error_msg', 'Email already registered');
+          req.flash('error_msg', 'Email déja utilisé');
           res.redirect('/auth/signup');
         } else {
           const newUser = new User({
@@ -93,7 +93,7 @@ router.post('/signup', (req, res) => {
                   console.log(err);
                   return;
                 }
-                req.flash('success_msg', 'User add');
+                req.flash('success_msg', 'Félicitation vous avez créé votre compte ');
                 res.redirect('/auth/mail');
               });
 

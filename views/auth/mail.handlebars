@@ -25,18 +25,18 @@
               <div class="f-login-title color-dr-blue-2">Bon retour parmi nous</div>
               <div class="f-login-desc color-grey">Veuillez vous connecter à votre compte</div>
             </div>
-             {{> _msg}}
-       {{> _errors}}
+            {{> _msg}} {{> _errors}}
             <form class="f-login-form" method="POST" action="/auth/mail">
               <div class="input-style-1 b-50 type-2 color-5">
                 <input name="email" type="text" placeholder="Enter votre email" required>
               </div>
               <div class="input-style-1 b-50 type-2 color-5">
-                <input name="password" type="text" placeholder="Enter votre mot de passe" required>
+                <input name="password" type="password" placeholder="Enter votre mot de passe" required>
               </div>
               <div class="checkbox-group">
 
-                {{!-- <div class="input-entry color-3">
+                {{!--
+                <div class="input-entry color-3">
                   <input class="checkbox-form" id="text-2" type="checkbox" name="checkbox" value="climat control">
                   <label class="clearfix" for="text-2">
                     <span class="sp-check">
@@ -47,23 +47,24 @@
                 </div> --}}
               </div>
               <input type="submit" class="login-btn c-button full b-60 bg-dr-blue-2 hv-dr-blue-2-o" value="Continuer">
-                            <h4 class="text-center color-dark-2-light ">ou</>
+              <h4 class="text-center color-dark-2-light ">ou
+                </>
 
-              <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <a href="#" class="c-button full b-60 bg-blue-7 hv-blue-7-o">
-                    <i class="fa fa-facebook"></i>
-                    <span>Continuer avec facebook</span>
-                  </a>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <a href="#" class="c-button full b-60 bg-blue-7 hv-blue-7-o">
+                      <i class="fa fa-facebook"></i>
+                      <span>Continuer avec facebook</span>
+                    </a>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-6">
+                    <a href="/auth/google" class="c-button full b-60 bg-aqua hv-red-3-o">
+                      <i class="fa fa-google-plus"></i>
+                      <span>Continuer avec Google</span>
+                    </a>
+                  </div>
                 </div>
-             
-                <div class="col-xs-12 col-sm-6">
-                  <a href="/auth/google" class="c-button full b-60 bg-aqua hv-red-3-o">
-                    <i class="fa fa-google-plus"></i>
-                    <span>Continuer avec Google</span>
-                  </a>
-                </div>
-              </div>
 
             </form>
           </div>

@@ -48,7 +48,7 @@ module.exports = function (passport) {
       }).then(user => {
         if (!user) {
           // Return user
-         return done(null, false,{message: 'No User Found'});
+         return done(null, false,{message: 'Email introuvable'});
         } 
         // Match password
         bcrypt.compare(password, user.password,(err, isMatch)=> {
@@ -56,7 +56,7 @@ module.exports = function (passport) {
           if(isMatch){
             return done(null, user);
           } else {
-            return done(null, false,{message: 'Password Incorrect'});
+            return done(null, false,{message: 'mot de passe incorrect '});
           }
         })
       })

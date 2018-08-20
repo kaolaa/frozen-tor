@@ -20,6 +20,8 @@ require('./config/passport')(passport);
 
 //Load routes
 const auth = require('./routes/auth');
+const account = require('./routes/account');
+
 
 //Load Keys
 const key = require('./config/keys');
@@ -88,6 +90,8 @@ app.get('/', (req, res) => {
 
 //Use Routes 
 app.use('/auth', auth); 
+app.use('/account', account); 
+
 
 app.get('/about', (req, res) => {
   res.render('About');

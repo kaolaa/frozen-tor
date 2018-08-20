@@ -6,23 +6,26 @@
         <div class="f-register-title color-dr-blue-2">Bonjour , heureux de vous rencontrer !</div>
         <div class="f-register-desc color-grey">Veuillez remplir ces champs</div>
       </div>
-        {{> _msg}}
-       {{> _errors}}
+      {{> _msg}} {{> _errors}}
       <form class="f-register-form" action="/auth/signup" method="POST">
+
+
         <div class="input-style-1 b-50 type-2 color-5">
           <input type="text" name="nom" placeholder="Enter votre nom" required>
         </div>
         <div class="input-style-1 b-50 type-2 color-5">
           <input type="text" name="prenom" placeholder="Enter votre prenom" required>
         </div>
+
+
         <div class="input-style-1 b-50 type-2 color-5">
           <input type="text" name="email" placeholder="Enter votre email" required>
         </div>
         <div class="input-style-1 b-50 type-2 color-5">
-          <input type="text" name="password" placeholder="Enter votre mot de passe" required>
+          <input type="password" name="password" placeholder="Enter votre mot de passe" required>
         </div>
         <div class="input-style-1 b-50 type-2 color-5">
-          <input type="text" name="password2" placeholder="Comfirmer votre mot de passe" required>
+          <input type="password" name="password2" placeholder="Comfirmer votre mot de passe" required>
         </div>
         <div class="checkbox-group">
 
