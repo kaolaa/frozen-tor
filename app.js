@@ -16,6 +16,7 @@ var cities = require ('full-countries-cities');
 // load user model
 require('./models/User');
  
+
 // Passport config 
 require('./config/passport')(passport);
 

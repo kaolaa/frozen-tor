@@ -14,6 +14,7 @@ $(document).ready(function(){
               text: city
               }));
            });
+          
            $("#city").val($("#usercity").val());
     });
   });
