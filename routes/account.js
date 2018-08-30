@@ -91,8 +91,6 @@ router.put('/change-password', (req, res) => {
   if (req.body.newpassword.length < 4) {
     errors.push({ text: 'Le mot de passe doit contenir aux moins 4 caractères ' });
   }
-
-
   if (errors.length > 0) {
     res.render('account/change-password', {
       errors: errors,
