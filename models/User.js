@@ -16,13 +16,38 @@ const UserSchema = new Schema({
   LastName: {
     type: String,
   },
+  telephone: {
+    type: String,
+  },
   password: {
     type: String,
   },
   image: {
     type: String,
   },
+  country: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  Dateofbirth: {
+    type: String,
+  },
 });
 
 //Create collection and add schema
 mongoose.model('users',UserSchema);
+
+// bcrypt middleware
+UserSchema.pre('save', function(next){
+  var user = this;
+
+  //check if password is modified, else no need to do anything
+  if (!user.isModified('pass')) {
+     return next()
+  }
+
+  user.pass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  next()
+})

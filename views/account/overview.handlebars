@@ -1,3 +1,4 @@
+{{> _header}}
 {{> _banner}}
 <!-- BLOG -->
 <div class="detail-wrapper">
@@ -13,25 +14,27 @@
 							<h3>Profile</h3>
 							<div class="form-group">
 								<label class="color-grey-8">Nom d'utilisateur</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
+								<p class="form-control-static" id="card-profile-username">{{user.FirstName}} {{user.LastName}}</p>
 							</div>
 							<div class="form-group">
 								<label class="color-grey-8">Adresse d'email</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
+								<p class="form-control-static" id="card-profile-username">{{user.email}}</p>
 							</div>
 							<div class="form-group">
 								<label class="color-grey-8">Date de naissance</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
+								<p class="form-control-static" id="card-profile-username">{{user.Dateofbirth}}</p>
 							</div>
 							<div class="form-group">
-								<label class="color-grey-8">Contry</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
+								<label class="color-grey-8">Pays</label>
+								<p class="form-control-static" id="card-profile-username">{{user.country}}</p>
 							</div>
 							<div class="form-group">
-								<label class="color-grey-8">Code postal</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
+								<label class="color-grey-8">Ville</label>
+								<p class="form-control-static" id="card-profile-username">{{user.city}}</p>
 							</div>
-							<input class=" c-button full b-20 bg-dr-blue-2 hv-dr-blue-2-o" type="button" value="Profil">
+							<a href="/account/profil" class="c-button full b-20 bg-dr-blue-2 hv-dr-blue-2-o">
+                <span>Compte</span>
+              </a>
 
 						</div>
 						<div class="box col-md-6 ">
@@ -62,52 +65,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-4 col-md-pull-8">
-				<div class="right-sidebar">
-					{{!--
-					<div class="sidebar-block type-2">
-						<div class="widget-search clearfix">
-							<form>
-								<div class="input-style-1 b-50 brd-0 type-2 color-3">
-									<input type="text" placeholder="Enter what you want to find">
-								</div>
-								<input class="widget-submit" type="submit" value="">
-							</form>
-						</div>
-					</div> --}}
-					<div class="sidebar-block type-2">
-						<img class="account-img" src="/img/detail/comment_1.jpg" alt="">
-						<ul class="sidebar-category color-5">
-							<li class="active">
-								<a href="#">Vue d'ensemble du compte
-								</a>
-							</li>
-							<li>
-								<a href="#">Modifier votre profile
-								</a>
-							</li>
-							<li>
-								<a href="#">Mot de passe
-								</a>
-							</li>
-							<li>
-								<a href="#">Historique des reservations
-								</a>
-							</li>
-							<li>
-								<a href="#">Vos voyages
-								</a>
-							</li>
-
-						</ul>
-					</div>
-
-
-
-
-
-				</div>
-			</div>
+	
+					{{> _sidebar}}
+			
 		</div>
 	</div>
 </div>

@@ -5,11 +5,13 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const hbs = require('handlebars');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const app = express();
-const debug = require('debug')('expressdebug:server');
+var countries = require ('full-countries-cities').getCountryNames(); 
+var cities = require ('full-countries-cities');  
 
 // load user model
 require('./models/User');
@@ -62,6 +64,9 @@ app.use(function(req,res,next){
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.countries = countries;
+  res.locals.contry = "";
+  res.locals.cities= cities.getCities("Morocco").sort();
   next();
 });
 
@@ -77,6 +82,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Global variables
 app.use(function(req,res,next){
   res.locals.user = req.user || null ;
   next();
@@ -100,6 +106,21 @@ app.get('/users/test', (req, res) => {
   res.render('users/test');
 });
 
+//handlebars if condition
+hbs.registerHelper('if_eq', function(a, b, opts) {
+  if (a == b) {
+      return opts.fn(this);
+  } else {
+      return opts.inverse(this);
+  }
+});
+// Handlebars.registerHelper('isApplyNow', function(block) {
+//   if(this.title == "Apply Now") {
+//     return block(this);
+//   } else {
+//     return block.inverse(this);
+//   }
+// });
 
 
 

@@ -384,7 +384,7 @@ b, strong { font-weight: 700; }
 
 .submit input { padding: 21px 20px; letter-spacing: 1px; }
 
-.input-style-1.color-2 input { border-color: rgba(219, 219, 219, 0.6); color: rgba(34, 34, 34, 0.6); }
+.input-style-1.color-2 input { border-color: rgba(219, 219, 219, 0.6); color: rgb(34, 35, 38); }
 
 .input-style-1.color-2 input::-webkit-input-placeholder { color: rgba(34, 34, 34, 0.6); opacity: 1; }
 
@@ -649,7 +649,7 @@ a:focus, a:hover {color: rgba(0, 0, 0, 0.8);}
 header { position: fixed; left: 0px; top: 0px; z-index: 100; width: 100%; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -o-transition: all 0.2s ease-out; transition: all 0.2s ease-out; }
 .logo {-webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -o-transition: all 0.2s ease-out; transition: all 0.2s ease-out;}
 .nav {-webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -o-transition: all 0.2s ease-out; transition: all 0.2s ease-out;}
-.top-header-bar { position: relative; width: 100%; padding: 30px 0px 0px; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -o-transition: all 0.2s ease-out; transition: all 0.2s ease-out; }
+.top-header-bar { padding: 15px 0px 0px; position: relative; width: 100%; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -o-transition: all 0.2s ease-out; transition: all 0.2s ease-out; }
 
 header.scrol .top-header-bar { padding: 15px 0px 0px; }
 
@@ -5210,7 +5210,7 @@ border-color: transparent transparent #222222 transparent; position: absolute; t
 .type-2.bg-dark-2 .c-button.hv-sea:hover {background: #000!important; color: #fff!important; border: 1px solid #141414!important; }
 
 header.menu-3 {background: #fff;}
-.menu-3 .top-header-bar {background: none; border-bottom: 1px solid rgba(255,255,255,0.5); padding: 0px;}
+.menu-3 .top-header-bar {background: none; border-bottom: 1px solid rgba(255,255,255,0.5); }
 .left-col {position: relative; float: left; width: 50%;}
 .left-col a {font-size: 16px; color: #fff; padding: 20px 12px; position: relative; float: left; display: block;}
 .left-col a:hover {background: rgba(0,0,0,0.4);}
@@ -7483,5 +7483,11 @@ body[data-color="theme-8"] .accordeon-entry h5:after {background: #d73240;}
 .account .box {background: rgb(248, 248, 248);  padding: 40px; border: 10px solid #fff; margin: 0 auto;  border-radius: 20px;}
 .account h3 { color:  rgb(215, 50, 64); font-size:18px; font-weight:600; letter-spacing: 1px ;margin-bottom: 12px; }
 .account h2 { color:  rgb(215, 50, 64); font-weight:600; font-size:26px; margin-bottom: 12px; }
+.account .input-style-1 {padding: 20px;}
+.account .input-style-1 img { padding-left: 20px;}
+.account .input-style-1.type-2.b-50 .datepicker  { padding-left: 50px;}
 
+
+.account .form-group 
 text-align: center;
+style="padding-left: 20px;"
