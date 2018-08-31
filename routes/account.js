@@ -51,35 +51,6 @@ router.put('/profil', (req, res) => {
 
 
 //edit password
-// router.put('/change-password', (req, res) => {
-//   User.findOne({
-//     _id: res.locals.user.id
-//   }).then(user => {
-//     user.FirstName = req.body.nom;
-//     user.LastName = req.body.prenom;
-//     user.email = req.body.email ;
-//     user.telephone = req.body.telephone ;
-//     user.country= req.body.country ;
-//     user.city= req.body.city ; 
-//     user.Dateofbirth= req.body.Dateofbirth
-
-//     user.save().then(user => {
-//       res.redirect('/account/overview');
-//     })
-//   });
-// });
-
-// router.post('/mail', (req, res, next) => {
-//   passport.authenticate('local', {
-//     failureRedirect: '/auth/mail',
-//     failureFlash: true,
-//     successRedirect: '/'
-
-//   })(req, res, next);
-//   // Successful authentication, redirect home.
-//   // res.redirect('/');
-// });
-
 
 router.put('/change-password', (req, res) => {
   let errors = [];
