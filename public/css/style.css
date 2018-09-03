@@ -2474,7 +2474,7 @@ nav li.type-4 .dropmenu .fa-chevron-right { display: none; }
 
 .simple-tab .nav-tab { text-align: center; font-size: 0; position: relative; top: 1px; z-index: 2; }
 
-.simple-tab .nav-tab-item { display: inline-block; height: 50px; font-size: 12px; line-height: 50px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 0px 30px; border: 1px solid #eaeaea; border-left: none; cursor: pointer; border-radius: 3px;}
+.simple-tab .nav-tab-item { display: inline-block; height: 50px; font-size: 15px; line-height: 50px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 0px 30px; border: 1px solid #eaeaea; border-left: none; cursor: pointer; border-radius: 3px;}
 
 .simple-tab .nav-tab-item:first-child { border-left: 1px solid #eaeaea; }
 
@@ -2494,9 +2494,9 @@ nav li.type-4 .dropmenu .fa-chevron-right { display: none; }
 
 .simple-tab.tab-3 .nav-tab-item { display: block; float: left; width: 33.33333333%; padding: 0px 5px; }
 
-.simple-tab.type-2 .tab-nav-wrapper { margin-bottom: 50px; }
+.simple-tab.type-2 .tab-nav-wrapper { margin-bottom: 10px; }
 
-.simple-tab.type-2 .nav-tab-item { position: relative; font-size: 10px; line-height: 39px; font-weight: 700; color: #b9b9b9; letter-spacing: 0.5px; display: inline-block; height: 39px; background: #f8f8f8; padding: 0 14px; text-transform: uppercase; border: none; margin-right: 5px; }
+.simple-tab.type-2 .nav-tab-item { position: relative; font-size: 15px; line-height: 39px; font-weight: 700; color: #b9b9b9; letter-spacing: 0.5px; display: inline-block; height: 50px; background: #f8f8f8; padding: 0 14px; text-transform: uppercase; border: none; margin-right: 5px; }
 
 .simple-tab.type-2 .nav-tab-item:last-child { margin-right: 0px; }
 
@@ -5368,7 +5368,7 @@ header.color-2 nav.bg-green  > ul > li > a:hover {color: #999;}
 .menu-block .dropmenu li {font-size: 14px; line-height: 32px;}
 .col-6 {width: 20%; padding-left: 15px; padding-right: 15px; position: relative; float: left;}
 .list-title {font-weight: 700; text-transform: capitalize; list-style: none;}
-.tabs-wrap-style {border: 1px solid rgba(185,185,185,0.4); border-radius: 5px; padding: 30px; margin-bottom: 30px;}
+.tabs-wrap-style {border: 10px solid #d73240; border-radius: 5px; padding: 30px; margin-bottom: 30px;}
 .tabs-wrap-style .accordion-form {margin: 0px;}
 .accordion-form .c-button.bg-grey-3-t {color: #ccc; border: 1px solid #ccc;}
 .accordion-form .c-button.bg-grey-3-t:hover {border: 1px solid rgba(255,255,255,0); color: #fff;}
@@ -7486,8 +7486,10 @@ body[data-color="theme-8"] .accordeon-entry h5:after {background: #d73240;}
 .account .input-style-1 {padding: 20px;}
 .account .input-style-1 img { padding-left: 20px;}
 .account .input-style-1.type-2.b-50 .datepicker  { padding-left: 50px;}
-
+.flight_widget {padding: 60px;   }
+.flight_widget input {color: #fff;  }
 
 .account .form-group 
 text-align: center;
 style="padding-left: 20px;"
+

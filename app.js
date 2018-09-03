@@ -22,6 +22,7 @@ require('./config/passport')(passport);
 //Load routes
 const auth = require('./routes/auth');
 const account = require('./routes/account');
+const tour = require('./routes/tour');
 
 
 //Load Keys
@@ -96,30 +97,13 @@ app.get('/', (req, res) => {
 //Use Routes 
 app.use('/auth', auth); 
 app.use('/account', account); 
+app.use('/tour', tour); 
+
 
 
 app.get('/about', (req, res) => {
   res.render('About');
 });
-app.get('/users/test', (req, res) => {
-  res.render('users/test');
-});
-
-//handlebars if condition
-hbs.registerHelper('if_eq', function(a, b, opts) {
-  if (a == b) {
-      return opts.fn(this);
-  } else {
-      return opts.inverse(this);
-  }
-});
-// Handlebars.registerHelper('isApplyNow', function(block) {
-//   if(this.title == "Apply Now") {
-//     return block(this);
-//   } else {
-//     return block.inverse(this);
-//   }
-// });
 
 
 
