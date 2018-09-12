@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 // load user model
 const User = mongoose.model('users');
 
+
 module.exports = function (passport) {
   passport.use(
     new GoogleStrategy({

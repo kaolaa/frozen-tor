@@ -383,7 +383,7 @@ $(function() {
 	
     //Tabs
 	var tabFinish = 0;
-	$(document).on('click', '.nav-tab-item', function(){
+	$(document).on('click', '.nav-tab-item ', function(){
 		
 	    var $t = $(this);
 	    if(tabFinish || $t.hasClass('active')) return false;
@@ -402,6 +402,7 @@ $(function() {
 	        });
 	    });
 	});
+
 
 	$('.cat-drop').on('click', function(){
 		var $t = $(this).parent('li');

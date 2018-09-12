@@ -8,7 +8,6 @@ const bcrypt = require('bcryptjs');
 require('../models/User');
 const User = mongoose.model('users');
 
-
 router.get('/overview', (req, res) => {
   res.render('account/overview');
 });

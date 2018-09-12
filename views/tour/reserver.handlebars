@@ -1,0 +1,514 @@
+{{> _header}} {{!-- {{> _banner}} --}}
+
+<div class="inner-banner style-3 background-block" style="background-image: url(&quot;img/detail/bg_5.jpg&quot;);">
+	<img class="center-image" src="/img/detail/bg_5.jpg" alt="" style="display: none;">
+	<div class="vertical-align">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-8 col-md-offset-2">
+					<ul class="banner-breadcrumb color-white clearfix">
+						{{!--
+						<li>
+							<a class="link-blue-2" href="#">home</a> /</li>
+						<li>
+							<span>hotel booking</span>
+						</li> --}}
+					</ul>
+					<h2 class="color-white">Réservez dès maintenant votre séjour chez nous</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="main-wraper padd-90  padd-70-0 bg-grey-2 tabs-page">
+	<div class="container ">
+		{{!--
+		<div class="row">
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+				<div class="second-title">
+
+					<h2>Réservez dès maintenant votre séjour chez nous</h2>
+				</div>
+			</div>
+		</div> --}}
+
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<div class="simple-tab type-2 tab-wrapper">
+					{{#if messages}}
+					<div class="alert alert-danger">{{messages}}</div>
+					{{/if}}
+					<div class="tab-nav-wrapper">
+						<div class="nav-tab  clearfix">
+							<div id="tab1" class="nav-tab-item active">
+								Details de votre commande
+							</div>
+							<div id="tab2" class="nav-tab-item">
+								Vos préférences
+							</div>
+							<div id="tab3" class="nav-tab-item">
+								Réservation et payement
+							</div>
+						</div>
+					</div>
+
+					<div class="tabs-content tabs-wrap-style clearfix bg-white">
+						<div id="tab1" class="tab-info active">
+							<div class="acc-body">
+								<div class=" col-md-12">
+									<form>
+										<div class="simple-group">
+											<h4 class="small-title">Consultez les détails du voyage</h4>
+											<div class="row">
+
+												<div class="col-xs-12 col-sm-6">
+													<div class="form-block type-2 clearfix">
+														<div class="form-label color-dark-2">Date de sejour</div>
+														<div class="row">
+															<div class="col-xs-12 col-sm-6">
+																<div class="input-style-1 b-50  type-2 color-3">
+																	<img src="img/calendar_icon_grey.png" alt="">
+																	<input id="arrive" name="arrive" value="" type="text" placeholder="Arrivée" class="datepicker">
+
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6">
+																<div class="input-style-1 b-50  type-2 color-3">
+																	<img src="img/calendar_icon_grey.png" alt="">
+																	<input id="depart" name="depart" value="" type="text" placeholder="départ" class="datepicker">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-6">
+													<div class="form-block type-2 clearfix">
+														<div class="form-label color-dark-2">Nombre de personne</div>
+														<div class="row">
+															<div class="col-xs-12 col-sm-6">
+																<div class="drop-wrap drop-wrap-s-4 color-5">
+																	<div class="drop">
+																		<b id="Adultes">Adultes</b>
+																		<a href="#" class="drop-list">
+																			<i class="fa fa-angle-down"></i>
+																		</a>
+																		<span>
+																			<a href="#">1</a>
+																			<a href="#">2</a>
+																			<a href="#">3</a>
+																			<a href="#">4</a>
+																			<a href="#">5</a>
+																			<a href="#">6</a>
+																			<a href="#">7</a>
+																			<a href="#">8</a>
+																			<a href="#">9</a>
+																			<a href="#">10</a>
+																			<a href="#">11</a>
+																			<a href="#">12</a>
+																			<a href="#">13</a>
+																		</span>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-6">
+																<div class="drop-wrap drop-wrap-s-4 color-5">
+																	<div class="drop">
+																		<b id="Enfants">Enfants</b>
+																		<a href="#" class="drop-list">
+																			<i class="fa fa-angle-down"></i>
+																		</a>
+																		<span>
+																			<a href="#">0</a>
+																			<a href="#">1</a>
+																			<a href="#">2</a>
+																			<a href="#">3</a>
+																			<a href="#">4</a>
+																			<a href="#">5</a>
+																			<a href="#">6</a>
+																			<a href="#">7</a>
+																			<a href="#">8</a>
+																			<a href="#">9</a>
+																			<a href="#">10</a>
+																			<a href="#">11</a>
+																			<a href="#">12</a>
+																			<a href="#">13</a>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-6">
+													<div class="form-block type-2 clearfix">
+														<div class="form-label color-dark-2">Nombre de chambre</div>
+														<div class="input-style-1 b-50 brd-0 type-2 color-3">
+															<div class="drop-wrap drop-wrap-s-4 color-5">
+																<div class="drop">
+																	<b id="Chambre">1</b>
+																	<a href="#" class="drop-list">
+																		<i class="fa fa-angle-down"></i>
+																	</a>
+																	<span>
+																		<a href="#">1</a>
+																		<a href="#">2</a>
+																		<a href="#">3</a>
+
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-6">
+													<div class="form-block type-2 clearfix">
+														<div class="form-label color-dark-2">Aeroport d'arrivée</div>
+														<div class="input-style-1 b-50 brd-0 type-2 color-3">
+															<div class="drop-wrap drop-wrap-s-4 color-5">
+																<div class="drop">
+																	<b id="Aeroport">Aéroport international Rabat - Salé</b>
+																	<a href="#" class="drop-list">
+																		<i class="fa fa-angle-down"></i>
+																	</a>
+																	<span>
+																		<a href="#">Aéroport Mohammed V - Casablanca</a>
+																		<a href="#">Aéroport international Rabat - Salé</a>
+																		<a href="#">Aéroport de Marrakech - Menara</a>
+
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+
+											</div>
+
+										</div>
+									</form>
+
+								</div>
+
+							</div>
+						</div>
+
+						<div id="tab2" class="tab-info">
+							<div class="acc-body">
+								<div class=" col-md-12">
+									<div class="simple-group">
+										<h4 class="small-title">Avez vous des détails à ajouter ?</h4>
+										<div class="row">
+
+											<div class="col-xs-12 col-sm-6">
+												<div class="form-block type-2 clearfix">
+													<div class="form-label color-dark-2">Nourriture incluse</div>
+													<div class="input-style-1 b-50 brd-0 type-2 color-3">
+														<div class="drop-wrap drop-wrap-s-4 color-5">
+															<div class="drop">
+																<b id="Nourriture">Non</b>
+																<a href="#" class="drop-list">
+																	<i class="fa fa-angle-down"></i>
+																</a>
+																<span>
+																	<a href="#">Oui</a>
+																	<a href="#">Non</a>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12 col-sm-6">
+												<div class="form-block type-2 clearfix">
+													<div class="form-label color-dark-2">Activités extra incluse</div>
+													<div class="input-style-1 b-50 brd-0 type-2 color-3">
+														<div class="drop-wrap drop-wrap-s-4 color-5">
+															<div class="drop">
+																<b id="Activite">Non</b>
+																<a href="#" class="drop-list">
+																	<i class="fa fa-angle-down"></i>
+																</a>
+																<span>
+																	<a href="#">Oui</a>
+																	<a href="#">Non</a>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="col-xs-12 col-sm-10">
+												<div class="form-block type-2 clearfix">
+													<div class="form-label color-dark-2">laisser votre message ici </div>
+
+													<div class="input-style-1 b-50 brd-0 type-2 color-3">
+														<textarea id="message" class="area-style-1 type-2 color-3" required="" placeholder="Bonjour, j'aimerais bien ..."></textarea>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div id="tab3" class="tab-info">
+							<div class="acc-body">
+								<form id="payment-form" class="simple-from" action="/tour/test" method="post">
+									<div class="bt-drop-in-wrapper">
+										<div id="bt-dropin"></div>
+									</div>
+									<input id="nonce" name="payment_method_nonce" type="hidden">
+									<button type="submit" class="c-button  bg-blue-8 hv-blue-8-o ">
+										<i class=" 	fa fa-paypal"> </i>
+										<span>Confirmer</span>
+									</button>
+								</form>
+								<script type="text/javascript">
+									$(function () {
+
+										var form = document.querySelector('#payment-form');
+										var token = "{{{clientToken}}}";
+
+
+										//var token = 'sandbox_xgm2fqsy_vgmqwkcfd4vcf629';
+
+										braintree.dropin.create({
+											authorization: token,
+											container: '#bt-dropin',
+											locale: 'fr_FR',
+											paypal: {
+												flow: 'vault'
+											}
+										}, function (createErr, instance) {
+											form.addEventListener('submit', function (event) {
+												event.preventDefault();
+
+												instance.requestPaymentMethod(function (err, payload) {
+													if (err) {
+														console.log('Error', err);
+														return;
+													}
+													var s1 = {
+														adult: a,
+														enfant: e,
+														aeroport: ar,
+														activite: ae,
+														nouriture: n,
+														chambre: c,
+														arrive: arrive,
+														depart: depart
+													};
+													$.ajax({
+														type: 'GET',
+														url: "/tour/testt",
+														contentType: 'application/json',
+														data: { "id": s1 },
+														cache: false,
+														success: function (result) { console.log(result); }
+													});
+
+													// Add the nonce to the form and submit
+													document.querySelector('#nonce').value = payload.nonce;
+													form.submit();
+												});
+											});
+										});
+									});
+								</script> {{!--
+								<div class="bt-drop-in-wrapper">
+									<div id="bt-dropin"></div>
+								</div>
+								<input id="nonce" name="payment_method_nonce" type="hidden">
+								<button type="submit" class="c-button  bg-blue-8 hv-blue-8-o ">
+									<i class=" 	fa fa-paypal"> </i>
+									<span>Continuer avec paypal</span>
+								</button> --}} {{!--
+								<div class="accordion style-6">
+									<div class="acc-panel">
+										<div class="acc-title active ">
+											<span class="acc-icon card"></span>Payement par carte bancaire</div>
+										<div class="acc-body" style="display: block;">
+
+											<div class="row">
+												<div class="col-xs-12 col-md-4">
+													<ul>
+														<li>Shopping history</li>
+														<li>Hot offers according your settings</li>
+														<li>Multi-product search</li>
+													</ul>
+												</div>
+												<div class="col-xs-12 col-md-4">
+													<ul>
+														<li>Shopping history</li>
+														<li>Hot offers according your settings</li>
+														<li>Multi-product search</li>
+													</ul>
+												</div>
+												<div class="col-xs-12 col-md-4">
+													<ul>
+														<li>Shopping history</li>
+														<li>Hot offers according your settings</li>
+														<li>Multi-product search</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="acc-panel">
+										<div class="acc-title ">
+											<span class="acc-icon paypal"></span>Payement par paypal</div>
+										<div class="acc-body" style="display: none;">
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 text-center">
+													<h6>Pour terminer votre transaction, nous allons vous rediriger vers les serveurs PayPal sécurisés.</h6>
+													<button type="submit" class="c-button  bg-blue-8 hv-blue-8-o ">
+														<i class=" 	fa fa-paypal"> </i>
+														<span>Continuer avec paypal</span>
+													</button>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+								</div> --}}
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-xs-12 col-sm-6">
+						<a id="pre" class="c-button   bg-dr-blue-2 hv-dr-blue-2-o">
+							<i class=" 	fa fa-angle-left"></i>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<a id="next" class="c-button right  bg-dr-blue-2 hv-dr-blue-2-o">
+							<i class=" 	fa fa-angle-right"></i>
+						</a>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="col-xs-12 col-md-4">
+				<div class="right-sidebar">
+					<div class="checkout-coll">
+						<div class="checkout-head">
+							<div class="checkout-headl">
+								<a href="#">
+									<img alt="" src="/img/tour_list/tour_grid_1.jpg">
+								</a>
+							</div>
+							<div class="checkout-headr">
+								<div class="checkout-headrb">
+									<div class="checkout-headrp">
+										<div class="chk-left">
+											<div class="color-dark-2">
+												<a href="#">Villes Imperiales et oasis</a>
+											</div>
+											<div id="textarrive" class="chk-lbl-a"></div>
+
+											<div id="textdepart" class="chk-lbl-a"></div>
+											{{!--
+											<nav class="chk-stars">
+												<div class="rate">
+													<span class="fa fa-star color-yellow"></span>
+													<span class="fa fa-star color-yellow"></span>
+													<span class="fa fa-star color-yellow"></span>
+													<span class="fa fa-star color-yellow"></span>
+													<span class="fa fa-star color-yellow"></span>
+												</div>
+											</nav> --}}
+
+										</div>
+										<div class="chk-right">
+											<a href="#">
+												<img alt="" src="img/chk-edit.png">
+											</a>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+
+						<div class="chk-lines">
+							<div class="chk-line">
+								<i class="fa fa-clock-o"></i>
+								<span class="chk-nights">8 jours & 7 nuits </span>
+								{{!--
+								<span class="chk-dates">feb 05, 2015 / feb 08, 2015</span> --}}
+							</div>
+							<div id="textchambre" class="chk-line">
+								1 Chambre pour
+								<span class="chk-persons">1 personnes</span>
+							</div>
+							<div id="textAeroport" class="chk-line">
+								<span class="chk-nights">Arrivée :</span> Aéroport international Rabat - Salé
+							</div>
+						</div>
+
+						<div class="color-dark-2">
+							<h4>Details</h4>
+							<div class="chk-detais-row">
+								<div class="chk-line">
+									<span class="chk-l">type de chambre:</span>
+									<span class="chk-r">lit double</span>
+									<div class="clear"></div>
+								</div>
+								<div class="chk-line">
+									<span class="chk-l">prix de l'avance:</span>
+									<span class="chk-r">100$</span>
+									<div class="clear"></div>
+								</div>
+								<div class="chk-line">
+									<span class="chk-l">Nouriture</span>
+									<span id="textNouriture" class="chk-r">Non</span>
+									<div class="clear"></div>
+								</div>
+								<div class="chk-line">
+									<span class="chk-l">Activités extra</span>
+									<span id="textActivite" class="chk-r">Non</span>
+									<div class="clear"></div>
+								</div>
+								<div class="chk-line">
+									<span class="chk-l">Annulation</span>
+									<span class="chk-r">48 heures avant le voyage</span>
+									<div class="clear"></div>
+								</div>
+							</div>
+							<div class="chk-total">
+								<div class="chk-total-l">Prix totale</div>
+								<div class="chk-total-r">100$</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="sidebar-text-label bg-dr-blue-2 color-white">useful information</div>
+					<div class="help-contact bg-white">
+						<h4 class="color-dark-2">Need Help?</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+							aliqua.
+						</p>
+						<a class="help-phone color-dark-2 link-dr-blue-2" href="tel:0200059600">
+							<img src="/img/detail/phone24-dark-2.png" alt="">020 00 59 600</a>
+						<a class="help-mail color-dark-2 link-dr-blue-2" href="mailto:let’s_travel@world.com">
+							<img src="/img/detail/letter-dark-2.png" alt="">let’s_travel@world.com</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

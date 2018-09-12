@@ -10,8 +10,9 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const app = express();
-var countries = require ('full-countries-cities').getCountryNames(); 
+var countries = require ('full-countries-cities').getCountryNames();
 var cities = require ('full-countries-cities');  
+hbs.compile("{{clientToken}}",{noEscape:true});
 
 // load user model
 require('./models/User');
@@ -23,6 +24,8 @@ require('./config/passport')(passport);
 //Load routes
 const auth = require('./routes/auth');
 const account = require('./routes/account');
+const tour = require('./routes/tour');
+const routes = require('./routes/index');
 
 
 //Load Keys
@@ -94,34 +97,49 @@ app.get('/', (req, res) => {
   res.render('index', { title: title }); //didn't really use it <yet>
 });
 
-//Use Routes 
-app.use('/auth', auth); 
-app.use('/account', account); 
 
 
 app.get('/about', (req, res) => {
   res.render('About');
 });
-app.get('/users/test', (req, res) => {
-  res.render('users/test');
-});
 
-//handlebars if condition
-hbs.registerHelper('if_eq', function(a, b, opts) {
-  if (a == b) {
-      return opts.fn(this);
-  } else {
-      return opts.inverse(this);
-  }
-});
-// Handlebars.registerHelper('isApplyNow', function(block) {
-//   if(this.title == "Apply Now") {
-//     return block(this);
-//   } else {
-//     return block.inverse(this);
-//   }
+// // catch 404 and forward to error handler
+// app.use(function (req, res, next) {
+//   var err = new Error('Not Found');
+
+//   err.status = 404;
+//   next(err);
 // });
 
+// // error handlers
+
+// // development error handler
+// // will print stacktrace
+// if (app.get('env') === 'development') {
+//   app.use(function (err, req, res, next) { // eslint-disable-line no-unused-vars
+//     res.status(err.status || 500);
+//     res.render('error', {
+//       message: err.message,
+//       error: err
+//     });
+//   });
+// }
+
+// // production error handler
+// // no stacktraces leaked to user
+// app.use(function (err, req, res, next) { // eslint-disable-line no-unused-vars
+//   res.status(err.status || 500);
+//   res.render('error', {
+//     message: err.message,
+//     error: {}
+//   });
+// });
+
+//Use Routes 
+app.use('/auth', auth); 
+app.use('/account', account); 
+app.use('/tour', tour); 
+app.use('/index', routes); 
 
 
 const port = process.env.PORT || 5000;
