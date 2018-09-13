@@ -40,26 +40,26 @@ function formatErrors(errors) {
     return formattedErrors;
 }
 
-function createResultObject(transaction) {
-    var result;
-    var status = transaction.status;
+// function createResultObject(transaction) {
+//     var result;
+//     var status = transaction.status;
 
-    if (TRANSACTION_SUCCESS_STATUSES.indexOf(status) !== -1) {
-        result = {
-            header: 'Sweet Success!',
-            icon: 'success',
-            message: 'Your test transaction has been successfully processed. See the Braintree API response and try again.'
-        };
-    } else {
-        result = {
-            header: 'Transaction Failed',
-            icon: 'fail',
-            message: 'Your test transaction has a status of ' + status + '. See the Braintree API response and try again.'
-        };
-    }
+//     if (TRANSACTION_SUCCESS_STATUSES.indexOf(status) !== -1) {
+//         result = {
+//             header: 'Sweet Success!',
+//             icon: 'success',
+//             message: 'Your test transaction has been successfully processed. See the Braintree API response and try again.'
+//         };
+//     } else {
+//         result = {
+//             header: 'Transaction Failed',
+//             icon: 'fail',
+//             message: 'Your test transaction has a status of ' + status + '. See the Braintree API response and try again.'
+//         };
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
 // Load User Model
 require('../models/User');
@@ -149,11 +149,11 @@ router.get('/reserver', (req, res) => {
 });
 
 router.get('/test/:id', function (req, res) {
-    var result;
+  //  var result;
     var transactionId = req.params.id;
 
     gateway.transaction.find(transactionId, function (err, transaction) {
-        result = createResultObject(transaction);
+    //    result = createResultObject(transaction);
 
         // if (!req.body.title) {
         //     errors.push({ text: 'Please add a title' });
@@ -171,12 +171,12 @@ router.get('/test/:id', function (req, res) {
         // } else {
 
         const newBooking = {
-            ClientID: user.id,
+            ClientID: res.locals.user.id,
             TourID: 1,//tour.id,
             Aeroport: booking.aeroport,
             NbrKids: parseInt(booking.enfant),
             NbrAdults: parseInt(booking.adult),
-            NbrRooms: booking.chambre,
+            NbrRooms: parseInt(booking.chambre),
             Food: booking.nouriture,
             ExtraActivity: booking.activite,
             Message: booking.message,
@@ -186,10 +186,11 @@ router.get('/test/:id', function (req, res) {
             Arrival: booking.arrive,
             Leaving: booking.depart
         }
-        new Booking(newBooking)
+        new bookingmongo(newBooking)
             .save()
         // req.flash('success_msg', 'Project idea add');
-        res.render('tour/success', { transaction: transaction, result: result, booking: booking });
+        
+        res.render('tour/success', { transaction: transaction, booking: booking });
 
         // }
     });

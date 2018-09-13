@@ -18,13 +18,13 @@ const BookingSchema = new Schema({
     type: String,
   },
   NbrKids: {
-    type: String,
+    type: Number,
   },
   NbrAdults: {
-    type: String,
+    type: Number,
   },
   NbrRooms: {
-    type: String,
+    type: Number ,
   },
   Food: {
     type: String,

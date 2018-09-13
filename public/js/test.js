@@ -7,15 +7,7 @@ var c = "";
 var arrive="";
 var depart="";
 var message="";
-// var booking = "";
-// {
-//   adult: a,
-//   enfant: e,
-//   aeroport: ar,
-//   activite: ae,
-//   nouriture: n,
-//   chambre: c
-// };
+
 
 $(document).ready(function () {
   $("#country").change(function () {
@@ -53,7 +45,9 @@ $(document).ready(function () {
 
 
   });
-
+  $("#message").change( function(){
+    message=$("#message").val();
+  });
   $("span").click(function () {
 
     if ($("#Adultes").text() != "Adultes") {
@@ -68,7 +62,7 @@ $(document).ready(function () {
     }
     n = $("#Nourriture").text();
     ae = $("#Activite").text();
-    message=$("#message").val();
+ 
     // alert(a + e + c + ar + n);
    
     $('#textAeroport').text("").append(" <span class='chk-nights'>Arrivée :</span>	" + ar);

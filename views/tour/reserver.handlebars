@@ -302,8 +302,9 @@
 														activite: ae,
 														nouriture: n,
 														chambre: c,
-														arrive: arrive,
-														depart: depart
+														arrive: $("#arrive").val(),
+														depart: $("#depart").val(),
+														message:message
 													};
 													$.ajax({
 														type: 'GET',

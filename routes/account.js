@@ -7,12 +7,17 @@ const bcrypt = require('bcryptjs');
 // Load User Model
 require('../models/User');
 const User = mongoose.model('users');
+// Load booking Model
+require('../models/booking');
+const bookingmongo = mongoose.model('Booking');
 
 router.get('/overview', (req, res) => {
   res.render('account/overview');
 });
 router.get('/history', (req, res) => {
-  res.render('account/history');
+  bookingmongo.findOne({
+    _id: "5b9a707a2d710b1a9ccf906e"
+  }).then(bookingfound => res.render('account/history', { booking: bookingfound }));
 });
 router.get('/profil', (req, res) => {
   res.render('account/profil');
@@ -98,7 +103,8 @@ router.put('/change-password', (req, res) => {
             }
           })
 
-        }})
+        }
+      })
   }
 
 
