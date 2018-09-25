@@ -1,4 +1,4 @@
-{{> _header}} {{> _banner}}
+{{> _header}} {{> _banner title="Historique des reservations"}}
 <!-- BLOG -->
 <div class="detail-wrapper">
   <div class="container">
@@ -12,13 +12,16 @@
             <div class="table-responsive">
               <table class="table table-hover">
                 <tbody>
+                  {{#each bookingfound}}
+                 
+
                   <tr>
                     <td class=>
                       <div class="date bg-grey-2">
                         <h3>
-                          {{{trimString booking.BookingDate 3 5}}}
+                          {{{trimString BookingDate 3 5}}}
                         </h3>
-                        <h6>{{numbertomounth booking.BookingDate}}</h6>
+                        <h6>{{numbertomounth BookingDate}}</h6>
                       </div>
                       <img src="/img/tour_list/tour_grid_1.jpg" alt="" border=3 height=100 width=300></img>
 
@@ -31,13 +34,13 @@
                       </h3>
                       <ul class="list-unstyled booking-info">
                         <li>
-                          <span>Arrivee:</span>{{{booking.Arrival}}}</li>
+                          <span>Arrivee:</span>{{{Arrival}}}</li>
                         <li>
-                          <span>Depart:</span> {{{booking.Leaving}}}</li>
+                          <span>Depart:</span> {{{Leaving}}}</li>
                         <li>
-                          <span>Nombre de personne:</span> {{math booking.NbrKids "+" booking.NbrAdults}} </li>
+                          <span>Nombre de personne:</span> {{math NbrKids "+" NbrAdults}} </li>
                         <li>
-                          <span>Aeroport d'arrivee:</span> {{{booking.Aeroport}}}</li>
+                          <span>Aeroport d'arrivee:</span> {{{Aeroport}}}</li>
 
                       </ul>
 
@@ -45,114 +48,11 @@
                     </td>
 
                   </tr>
-                  <tr>
-                    <td class=>
-                      <div class="date bg-grey-2">
-                        <h3>18</h3>
-                        <h6>October</h6>
-                      </div>
-                      <img src="/img/tour_list/tour_grid_1.jpg" alt="" border=3 height=100 width=300></img>
-
-                    </td>
-                    <td class="table-title">
-                      <h3>Tom's Restaurant</h3>
-                      <ul class="list-unstyled booking-info">
-                        <li>
-                          <span>Booking Date:</span> 26.12.2017 at 03:20 pm</li>
-                        <li>
-                          <span>Booking Details:</span> 3 to 6 People</li>
-                        <li>
-                          <span>Client:</span> Lisa Smith
-                          <span class="line">|</span>lisasmith@youremail.com
-                          <span class="line">|</span>125 254 2578</li>
-                      </ul>
-
-                      <button class="c-button b-20 bg-dr-blue-2 hv-dr-blue-2-o right">Message</button>
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <td class>
-                      <div class="date bg-grey-2">
-                        <h3>18</h3>
-                        <h6>October</h6>
+                  {{else}}
+                  <p>No history</p>
+                  {{/each}}
 
 
-                      </div>
-                      <img src="/img/tour_list/tour_grid_1.jpg" alt="" border=3 height=100 width=300></img>
-                    </td>
-                    <td class="table-title">
-                      <h3>Tom's Restaurant</h3>
-                      <ul class="list-unstyled booking-info">
-                        <li>
-                          <span>Booking Date:</span> 26.12.2017 at 03:20 pm</li>
-                        <li>
-                          <span>Booking Details:</span> 3 to 6 People</li>
-                        <li>
-                          <span>Client:</span> Lisa Smith
-                          <span class="line">|</span>lisasmith@youremail.com
-                          <span class="line">|</span>125 254 2578</li>
-                      </ul>
-
-                      <button class="c-button b-20 bg-dr-blue-2 hv-dr-blue-2-o right">Message</button>
-                    </td>
-
-                  </tr>
-
-                  {{!--
-                  <tr>
-                    <td class="dash-list-icon booking-list-date">
-                      <div class="b-date">
-                        <h3>18</h3>
-                        <p>October</p>
-                      </div>
-                    </td>
-                    <td class="dash-list-text booking-list-detail">
-                      <h3>Tom's Restaurant</h3>
-                      <ul class="list-unstyled booking-info">
-                        <li>
-                          <span>Booking Date:</span> 26.12.2017 at 03:20 pm</li>
-                        <li>
-                          <span>Booking Details:</span> 3 to 6 People</li>
-                        <li>
-                          <span>Client:</span> Lisa Smith
-                          <span class="line">|</span>lisasmith@youremail.com
-                          <span class="line">|</span>125 254 2578</li>
-                      </ul>
-                      <button class="btn btn-orange">Message</button>
-                    </td>
-                    <td class="dash-list-btn">
-                      <button class="btn btn-orange">Cancel</button>
-                      <button class="btn">Approve</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td class="dash-list-icon booking-list-date">
-                      <div class="b-date">
-                        <h3>18</h3>
-                        <p>October</p>
-                      </div>
-                    </td>
-                    <td class="dash-list-text booking-list-detail">
-                      <h3>Tom's Restaurant</h3>
-                      <ul class="list-unstyled booking-info">
-                        <li>
-                          <span>Booking Date:</span> 26.12.2017 at 03:20 pm</li>
-                        <li>
-                          <span>Booking Details:</span> 3 to 6 People</li>
-                        <li>
-                          <span>Client:</span> Lisa Smith
-                          <span class="line">|</span>lisasmith@youremail.com
-                          <span class="line">|</span>125 254 2578</li>
-                      </ul>
-                      <button class="btn btn-orange">Message</button>
-                    </td>
-                    <td class="dash-list-btn">
-                      <button class="btn btn-orange">Cancel</button>
-                      <button class="btn">Approve</button>
-                    </td>
-                  </tr> --}}
                 </tbody>
               </table>
             </div>

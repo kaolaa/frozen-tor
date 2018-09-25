@@ -1,92 +1,93 @@
-'use strict';
+const express = require('express');
+const router = express();
+const nodemailer = require('nodemailer');
+const {ensureNotAuthenticated,ensureIsAuthenticated} = require('../helpers/auth');
 
-var express = require('express');
-var router = express.Router(); // eslint-disable-line new-cap
-var braintree = require('braintree');
-var gateway = require('../lib/gateway');
-
-var TRANSACTION_SUCCESS_STATUSES = [
-  braintree.Transaction.Status.Authorizing,
-  braintree.Transaction.Status.Authorized,
-  braintree.Transaction.Status.Settled,
-  braintree.Transaction.Status.Settling,
-  braintree.Transaction.Status.SettlementConfirmed,
-  braintree.Transaction.Status.SettlementPending,
-  braintree.Transaction.Status.SubmittedForSettlement
-];
-
-function formatErrors(errors) {
-  var formattedErrors = '';
-
-  for (var i in errors) { // eslint-disable-line no-inner-declarations, vars-on-top
-    if (errors.hasOwnProperty(i)) {
-      formattedErrors += 'Error: ' + errors[i].code + ': ' + errors[i].message + '\n';
-    }
-  }
-  return formattedErrors;
-}
-
-function createResultObject(transaction) {
-  var result;
-  var status = transaction.status;
-
-  if (TRANSACTION_SUCCESS_STATUSES.indexOf(status) !== -1) {
-    result = {
-      header: 'Sweet Success!',
-      icon: 'success',
-      message: 'Your test transaction has been successfully processed. See the Braintree API response and try again.'
-    };
-  } else {
-    result = {
-      header: 'Transaction Failed',
-      icon: 'fail',
-      message: 'Your test transaction has a status of ' + status + '. See the Braintree API response and try again.'
-    };
-  }
-
-  return result;
-}
-
-router.get('/', function (req, res) {
-  res.redirect('/checkouts/new');
+//index route
+router.get('/', (req, res) => {
+  const title = 'Hello '
+  res.render('index', { title: title }); //didn't really use it <yet>
 });
 
-router.get('/checkouts/new', function (req, res) {
-  gateway.clientToken.generate({}, function (err, response) {
-    res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
+
+router.get('/404', (req, res) => {
+  res.render('404');
+});
+router.get('/about', (req, res) => {
+  res.render('About');
+});
+router.get('/index2', (req, res) => {
+  res.render('index2');
+});
+router.get('/contact', (req, res) => {
+  res.render('contact');
+});
+router.post("/send", (req, res) => {
+  const output = `
+  <p>Vous avez une nouvelle demande de contact</p>
+  <h3>Details</h3>
+  <ul>  
+    <li>Nom: ${req.body.name}</li>
+    <li>Pays: ${req.body.pays}</li>
+    <li>Email: ${req.body.email}</li>
+    <li>Telephone: ${req.body.phone}</li>
+  </ul>
+  <h3>Message</h3>
+  <p>${req.body.message}</p>
+  
+`;
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: 'smtp-mail.outlook.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: 'testkoala@outlook.fr', // generated ethereal user
+      pass: '25kokilosoba'  // generated ethereal password
+    },
+    tls: {
+      ciphers:'SSLv3'
+    }
+  });
+  // setup email data with unicode symbols
+  let mailOptions = {
+    from: '"ikkiss groupe" <testkoala@outlook.fr>', // sender address
+    to: 'logolepsy.insta@gmail.com', // list of receivers
+    subject: 'contact form', // Subject line
+    text: 'Hello world?', // plain text body
+    html: output // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    req.flash('success_msg', 'Email has been sent');
+
+    res.render('contact');
+  });
+})
+
+
+// catch 404 and forward to error handler
+router.use(function (req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+ 
+// production error handler
+// no stacktraces leaked to user
+router.use(function (err, req, res, next) { // eslint-disable-line no-unused-vars
+  res.status(err.status || 500);
+  res.render('404', {
+    message: err.message,
+    error: {}
   });
 });
 
-router.get('/checkouts/:id', function (req, res) {
-  var result;
-  var transactionId = req.params.id;
-
-  gateway.transaction.find(transactionId, function (err, transaction) {
-    result = createResultObject(transaction);
-    res.render('checkouts/show', {transaction: transaction, result: result});
-  });
-});
-
-router.post('/checkouts', function (req, res) {
-  var transactionErrors;
-  var amount = req.body.amount; // In production you should not take amounts directly from clients
-  var nonce = req.body.payment_method_nonce;
-
-  gateway.transaction.sale({
-    amount: amount,
-    paymentMethodNonce: nonce,
-    options: {
-      submitForSettlement: true
-    }
-  }, function (err, result) {
-    if (result.success || result.transaction) {
-      res.redirect('checkouts/' + result.transaction.id);
-    } else {
-      transactionErrors = result.errors.deepErrors();
-      req.flash('error', {msg: formatErrors(transactionErrors)});
-      res.redirect('checkouts/new');
-    }
-  });
-});
-
-module.exports = router;
+module.exports = router

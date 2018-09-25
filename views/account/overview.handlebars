@@ -1,5 +1,4 @@
-{{> _header}}
-{{> _banner}}
+{{> _header}} {{> _banner title="compte"}}
 <!-- BLOG -->
 <div class="detail-wrapper">
 	<div class="container">
@@ -9,6 +8,8 @@
 					<div class="account-header">
 						<h2 class="account-title">Presentation</h2>
 					</div>
+					{{> _msg}} {{> _errors}}
+					
 					<div class="row">
 						<div class="box col-md-6 ">
 							<h3>Profile</h3>
@@ -33,41 +34,53 @@
 								<p class="form-control-static" id="card-profile-username">{{user.city}}</p>
 							</div>
 							<a href="/account/profil" class="c-button full b-20 bg-dr-blue-2 hv-dr-blue-2-o">
-                <span>Compte</span>
-              </a>
+								<span>Compte</span>
+							</a>
 
 						</div>
-						<div class="box col-md-6 ">
-							<h3>Profile</h3>
-							<div class="form-group">
-								<label class="color-grey-8">Nom d'utilisateur</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
-							</div>
-							<div class="form-group">
-								<label class="color-grey-8">Adresse d'email</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
-							</div>
-							<div class="form-group">
-								<label class="color-grey-8">Date de naissance</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
-							</div>
-							<div class="form-group">
-								<label class="color-grey-8">Contry</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
-							</div>
-							<div class="form-group">
-								<label class="color-grey-8">Code postal</label>
-								<p class="form-control-static" id="card-profile-username">khoulitalo</p>
-							</div>
+						<div class="boxbooking col-md-6 ">
+							{{!--
+							<h3>Profile</h3> --}} {{!--
+							<div class="sidebar-block type-2"> --}}
+								<h3>Vos reservation</h3>
+								<div class="widget-popular">
+									{{#each bookingfound}}
+									<div class="hotel-small style-2 clearfix">
+										<a class="hotel-img black-hover" href="#">
+											<img class="img-responsive radius-0" src="/img/home_7/small_hotel_5.jpg" alt="">
+											<div class="tour-layer delay-1"></div>
+										</a>
+										<div class="hotel-desc">
+											<div class="tour-info-line">
+												<div class="tour-info">
+													<img src="/img/calendar_icon_grey.png" alt="">
+													<span class="font-style-2 color-dark-2">8 jours & 7 nuits </span>
+												</div>
+												<div class="tour-info">
+													<img src="/img/people_icon_grey.png" alt="">
+													<span class="font-style-2 color-dark-2">{{math NbrKids "+" NbrAdults}} personnes</span>
+												</div>
+											</div>
+											<h4>Villes Imperiales et oasis</h4>
+
+										</div>
+									</div>
+									
+									{{else}}
+                  <p>No history</p>
+                  {{/each}}
+								</div>
+
+								{{!-- </div> --}}
 							<input class=" c-button full b-20 bg-dr-blue-2 hv-dr-blue-2-o" type="button" value="Profil">
 
 						</div>
 					</div>
 				</div>
 			</div>
-	
-					{{> _sidebar}}
-			
+
+			{{> _sidebar}}
+
 		</div>
 	</div>
 </div>

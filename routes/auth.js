@@ -3,6 +3,10 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const nodemailer = require('nodemailer');
+const {ensureNotAuthenticated,ensureIsAuthenticated} = require('../helpers/auth');
+
+
 
 // Load User Model
 require('../models/User');
@@ -36,16 +40,16 @@ router.get('/verify', (req, res) => {
   }
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', ensureIsAuthenticated, (req, res) => {
   req.logout();
   res.redirect('/');
 });
 
-router.get('/mail', (req, res) => {
+router.get('/mail', ensureNotAuthenticated, (req, res) => {
   res.render('auth/mail', { layout: false });
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', ensureNotAuthenticated, (req, res) => {
   res.render('auth/signup');
 });
 
@@ -59,7 +63,7 @@ router.post('/signup', (req, res) => {
   }
 
   if (req.body.password.length < 4) {
-    errors.push({ text: 'Le mot de passe doit contenir aux moins 4 caractères ' });
+    errors.push({ text: 'Le mot de passe doit contenir aux moins 4 caractères' });
   }
 
   if (errors.length > 0) {
@@ -93,11 +97,52 @@ router.post('/signup', (req, res) => {
                   console.log(err);
                   return;
                 }
+                const output = `
+            <p>merci d'avoir rejoindre notre famille </p>
+            <h3>Votre inscription a etes effectuer</h3>
+            
+            
+          `;
+
+                // create reusable transporter object using the default SMTP transport
+                let transporter = nodemailer.createTransport({
+                  host: 'smtp-mail.outlook.com',
+                  port: 587,
+                  secure: false, // true for 465, false for other ports
+                  auth: {
+                    user: 'testkoala@outlook.fr', // generated ethereal user
+                    pass: '25kokilosoba'  // generated ethereal password
+                  },
+                  tls: {
+                    ciphers: 'SSLv3'
+                  }
+                });
+                // setup email data with unicode symbols
+                let mailOptions = {
+                  from: '"ikkiss groupe" <testkoala@outlook.fr>', // sender address
+                  to: req.body.email, // list of receivers
+                  subject: 'inscription reussite', // Subject line
+                  text: 'Hello world?', // plain text body
+                  html: output // html body
+                };
+
+                // send mail with defined transport object
+                transporter.sendMail(mailOptions, (error, info) => {
+                  if (error) {
+                    return console.log(error);
+                  }
+                  console.log('Message sent: %s', info.messageId);
+                  console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+                });
+
+
+
                 req.flash('success_msg', 'Félicitation vous avez créé votre compte ');
                 res.redirect('/auth/mail');
               });
 
-         
+
 
             });
           });

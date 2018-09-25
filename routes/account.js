@@ -3,6 +3,11 @@ const router = express.Router();
 const mongoose = require('mongoose');
 var newcities = require('full-countries-cities');
 const bcrypt = require('bcryptjs');
+const tourfound = "";
+const thetour = "";
+const nodemailer = require('nodemailer');
+const {ensureNotAuthenticated,ensureIsAuthenticated} = require('../helpers/auth');
+
 
 // Load User Model
 require('../models/User');
@@ -11,18 +16,37 @@ const User = mongoose.model('users');
 require('../models/booking');
 const bookingmongo = mongoose.model('Booking');
 
-router.get('/overview', (req, res) => {
-  res.render('account/overview');
+router.get('/overview', ensureIsAuthenticated , (req, res) => {
+  bookingmongo.find({ ClientID: res.locals.user.id })
+    .limit(3)
+    .sort({ date: 'desc' })
+    .then(bookingfound => {
+      res.render('account/overview', {
+        bookingfound: bookingfound
+      });
+    });
 });
-router.get('/history', (req, res) => {
-  bookingmongo.findOne({
-    _id: "5b9a707a2d710b1a9ccf906e"
-  }).then(bookingfound => res.render('account/history', { booking: bookingfound }));
+
+router.get('/history', ensureIsAuthenticated , (req, res) => {
+  // tour.find({}).then(tourfound = tours);
+  bookingmongo.find({
+    ClientID: res.locals.user.id
+  })
+    .sort({ date: 'desc' })
+    .then(bookingfound => {
+      res.render('account/history', {
+        bookingfound: bookingfound
+        //, tourfound : tourfound , thetour : thetour
+      });
+    });
+  //   _id: "5b9a707a2d710b1a9ccf906e"
+  // }).then(bookingfound => res.render('account/history', { booking: bookingfound }));
 });
-router.get('/profil', (req, res) => {
+
+router.get('/profil',ensureIsAuthenticated , (req, res) => {
   res.render('account/profil');
 });
-router.get('/change-password', (req, res) => {
+router.get('/change-password', ensureIsAuthenticated , (req, res) => {
   res.render('account/change-password');
 });
 
@@ -47,6 +71,7 @@ router.put('/profil', (req, res) => {
     user.Dateofbirth = req.body.Dateofbirth
 
     user.save().then(user => {
+      req.flash('success_msg', 'Profil modifier');
       res.redirect('/account/overview');
     })
   });
@@ -92,6 +117,49 @@ router.put('/change-password', (req, res) => {
                         console.log(err);
                         return;
                       }
+                      const output = `
+                      <p>Chere ${res.locals.user.LastName},<br> Votre mot de passe vient d'etre changer
+                      <br>
+                      Si ce n'etait pas vous , veuillez nous contacter 
+                      localhost.com
+                      </p>
+                    `;
+
+                      // create reusable transporter object using the default SMTP transport
+                      let transporter = nodemailer.createTransport({
+                        host: 'smtp-mail.outlook.com',
+                        port: 587,
+                        secure: false, // true for 465, false for other ports
+                        auth: {
+                          user: 'testkoala@outlook.fr', // generated ethereal user
+                          pass: '25kokilosoba'  // generated ethereal password
+                        },
+                        tls: {
+                          ciphers: 'SSLv3'
+                        }
+                      });
+                      // setup email data with unicode symbols
+                      let mailOptions = {
+                        from: '"ikkiss groupe" <testkoala@outlook.fr>', // sender address
+                        to: res.locals.user.email, // list of receivers
+                        subject: 'Votre mot de passe a bien ete changer', // Subject line
+                        text: 'Hello world?', // plain text body
+                        html: output // html body
+                      };
+
+                      // send mail with defined transport object
+                      transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                          return console.log(error);
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+                      });
+
+
+
+                    
                       req.flash('success_msg', 'Votre mot de passe a bien ete modifié ');
                       res.redirect('/account/change-password');
                     });

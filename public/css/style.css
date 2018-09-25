@@ -827,6 +827,8 @@ body.st-148 { padding-top: 148px; }
 .nav { padding: 30px 0px 30px; }
 
 .logo { position: relative; float: left; }
+.logo img {max-width: 70px;
+max-height: 50px;}
 
 nav { float: right; color: #fff; padding-top: 4px; -o-transition: all 0.2s ease-out; transition: all 0.2s ease-out; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -ms-transition: all 0.2s ease-out; }
 
@@ -1217,7 +1219,7 @@ nav li.type-4 .dropmenu .fa-chevron-right { display: none; }
 
 .main-title.right > p { margin-left: 0; margin-right: 0; float: right; }
 
-.main-title.left { text-align: left; }
+.main-title.left { text-align: left; margin-top: 150px; }
 
 .main-title.left .info-line { text-align: left; }
 
@@ -1231,7 +1233,8 @@ nav li.type-4 .dropmenu .fa-chevron-right { display: none; }
 
 .top-weather-info p { float: none; display: inline-block; }
 
-.res-img { width: 100%; height: auto; display: block; }
+.res-img { width: 100%; height: auto; display: block;background-position: 50% 50%;
+background-repeat: no-repeat; }
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /* 09 - MAIN SLIDER */
@@ -1632,7 +1635,7 @@ nav li.type-4 .dropmenu .fa-chevron-right { display: none; }
 
 .item-block .rate { padding-bottom: 22px; }
 
-.item-block:hover .tour-layer { opacity: 1; }
+.item-block:hover .tour-layer { background: rgba(0, 0, 0, 0.6); }
 
 .item-block:hover h3 { color: #ff6600; }
 
@@ -1760,10 +1763,9 @@ nav li.type-4 .dropmenu .fa-chevron-right { display: none; }
 .tour-info:last-child { padding-bottom: 0px; }
 
 .tour-info span { padding-left: 10px; font-size: 11px;}
-
 .tour-info img { vertical-align: bottom; }
 .hotel-small .tour-layer {border-radius: 5px;}  
-.tour-layer { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); opacity: 0; transition: all 0.3s ease-in; -webkit-transition: all 0.3s ease-in;-moz-transition: all 0.3s ease-in;-ms-transition: all 0.3s ease-in;}
+.tour-layer { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0,0.2); opacity: 1; transition: all 0.3s ease-in; -webkit-transition: all 0.3s ease-in;-moz-transition: all 0.3s ease-in;-ms-transition: all 0.3s ease-in;}
 
 .tour-block:hover .tour-layer { opacity: 1; }
 
@@ -4164,6 +4166,10 @@ ul.dot-blue-2 li:before { color: #022c54; }
 
 .not-found-box {background: #fff; width: 800px; text-align: center; border: 10px solid #fff; margin: 0 auto; padding-top: 60px; padding-bottom: 80px; border-radius: 8px;}
 
+.not-found-boxtransparent { background: rgba(0, 0, 0, 0.4);width: 800px; text-align: center; border: 10px solid #fff; margin: 0 auto; padding-top: 60px; padding-bottom: 80px; border-radius: 8px;}
+
+
+
 .not-found-title { font-size: 150px; line-height: 150px; font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 10px; margin-bottom: 14px; }
 
 .not-found-message { font-size: 18px; line-height: 22px; font-weight: 700; color: #fff; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 45px; }
@@ -5251,7 +5257,8 @@ header.menu-3.hovered nav .dropmenu a > span {display: none;}
 .bg-dark.type-2 .footer-link ul li {line-height: 40px; margin: 0px 0px 0px 30px;}
 .bg-dark.type-2 .footer-link ul li a {text-transform: capitalize; }
 .bg-dark.type-2 .copyright span {color: #fff; font-size: 14px; font-weight: 500;}
-.bg-dark.type-2 .logo-footer {margin-bottom: 30px;}
+.bg-dark.type-2 .logo-footer {margin-bottom: 30px; max-width: 70px;
+max-height: 50px;}
 .bg-dark.type-2 .f_text {padding-bottom: 55px; color: #fff; font-size: 14px; line-height: 24px;}
 .footer-share a {position: relative; float: left; font-size: 22px; color: #fff; margin: 0px 20px 0px 0px;}
 .footer-share a:hover {color: #ff6600;}
@@ -7483,6 +7490,8 @@ body[data-color="theme-8"] .accordeon-entry h5:after {background: #d73240;}
 .account-header .account-title { margin: 30px; letter-spacing: 6px; }
 .account { margin: 20px; }
 .account .box {background: rgb(248, 248, 248);  padding: 40px; border: 10px solid #fff; margin: 0 auto;  border-radius: 20px;}
+.account .boxbooking {background: rgb(248, 248, 248);  padding: 40px 20px; border: 10px solid #fff; margin: 0 auto;  border-radius: 20px;}
+
 .account h3 { color:  rgb(215, 50, 64); font-size:18px; font-weight:600; letter-spacing: 1px ;margin-bottom: 12px; }
 .account h2 { color:  rgb(215, 50, 64); font-weight:600; font-size:26px; margin-bottom: 12px; }
 .account h6 {text-align: center;}
@@ -7541,7 +7550,7 @@ body[data-color="theme-8"] .accordeon-entry h5:after {background: #d73240;}
     .accordion .acc-icon.card:before { content: "\f09d"; position: absolute; top: 30%; left: 25%; display: block; width: 14px; height: 14px; margin-top: -7px; margin-left: -7px; text-align: center; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; -webkit-transform: translate(0, 0); -moz-transform: translate(0, 0); -ms-transform: translate(0, 0); -o-transform: translate(0, 0); transform: translate(0, 0); }
 
     .accordion .acc-icon.paypal:before { content: "\f1f4"; position: absolute; top: 30%; left: 25%; display: block; width: 14px; height: 14px; margin-top: -7px; margin-left: -7px; text-align: center; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; -webkit-transform: translate(0, 0); -moz-transform: translate(0, 0); -ms-transform: translate(0, 0); -o-transform: translate(0, 0); transform: translate(0, 0); }
-.account .date {padding: 15px;}
+.account .date {padding: 11px 14px;margin: 30px;}
 .account .date h3 { text-align: center; font-size:45px;}
 .account .table-title h3 {color: rgb(150, 146, 147);
     font-size: 20px;
@@ -7552,6 +7561,9 @@ body[data-color="theme-8"] .accordeon-entry h5:after {background: #d73240;}
 }
 .account li {font-size: 13px;line-height: 25px;font-weight: 400;}
 .account li span {font-weight: bold;}
-.account img {width: 80%; padding: 5px; margin-left: auto;margin-right: auto;display: block; border: 1px solid #ddd;}
+.account .table img {width: 80%; padding: 5px; margin-left: auto;margin-right: auto;display: block; border: 1px solid #ddd;}
 .account td {border-right: 1px solid #ddd;}
 .account td {border-bottom:  1px solid #ddd}
+.account .hotel-small.style-2 h4 {font-size: 11px;}
+.account .tour-info {padding-bottom: 0px;}
+padding: 40px 20px;

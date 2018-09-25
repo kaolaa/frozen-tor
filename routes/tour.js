@@ -5,6 +5,10 @@ const paypal = require('paypal-rest-sdk');
 const braintree = require('braintree');
 const gateway = require('../lib/gateway');
 const moment = require('moment');
+const nodemailer = require('nodemailer');
+const {ensureNotAuthenticated,ensureIsAuthenticated,ensureCompletedAccount} = require('../helpers/auth');
+
+
 
 // Load booking Model
 require('../models/booking');
@@ -141,7 +145,7 @@ router.post('/pay', (req, res) => {
 
 //braintree
 
-router.get('/reserver', (req, res) => {
+router.get('/reserver', ensureIsAuthenticated , ensureCompletedAccount, (req, res) => {
     gateway.clientToken.generate({}, function (err, response) {
         res.render('tour/reserver', { clientToken: response.clientToken, messages: res.locals.error });
     });
@@ -149,11 +153,11 @@ router.get('/reserver', (req, res) => {
 });
 
 router.get('/test/:id', function (req, res) {
-  //  var result;
+    //  var result;
     var transactionId = req.params.id;
 
     gateway.transaction.find(transactionId, function (err, transaction) {
-    //    result = createResultObject(transaction);
+        //    result = createResultObject(transaction);
 
         // if (!req.body.title) {
         //     errors.push({ text: 'Please add a title' });
@@ -189,7 +193,54 @@ router.get('/test/:id', function (req, res) {
         new bookingmongo(newBooking)
             .save()
         // req.flash('success_msg', 'Project idea add');
-        
+        const output = `
+            <p>Vous avez effectuer une reservation </p>
+            <h3>Voici un lien pour les Details</h3>
+            <ul>  
+              <li>Montant: ${transaction.amount}</li>
+              <li>Methode de payement: ${transaction.creditCard.cardType}</li>
+              <li>Id transaction: ${transaction.id}</li>
+            </ul>
+            <h3>pour plus de details voici le lien de la facture:</h3>
+            <p>localhost.com</p>
+            
+          `;
+
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            host: 'smtp-mail.outlook.com',
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: 'testkoala@outlook.fr', // generated ethereal user
+                pass: '25kokilosoba'  // generated ethereal password
+            },
+            tls: {
+                ciphers: 'SSLv3'
+            }
+        });
+        // setup email data with unicode symbols
+        let mailOptions = {
+            from: '"ikkiss groupe" <testkoala@outlook.fr>', // sender address
+            to: res.locals.user.email, // list of receivers
+            subject: 'Reservation effectuer', // Subject line
+            text: 'Hello world?', // plain text body
+            html: output // html body
+        };
+
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+            
+
+           
+        });
+
+
         res.render('tour/success', { transaction: transaction, booking: booking });
 
         // }

@@ -1,4 +1,4 @@
-{{> _header}} {{> _banner}}
+{{> _header}} {{> _banner title="Modifier profile"}}
 <!-- BLOG -->
 <div class="detail-wrapper">
   <div class="container">
@@ -34,7 +34,7 @@
                 <div class="form-group">
                   <label class="color-grey-8">Telephone</label>
                   <div class="input-style-1 b-50 type-2 color-2">
-                    <input value="{{user.telephone}}" name="telephone" type="text">
+                    <input value="{{user.telephone}}" name="telephone" required="" type="text">
                   </div>
                 </div>
 
@@ -44,7 +44,7 @@
 
                   <div class="input-style-1 b-50 type-2 color-2">
                     <img src="/img/calendar_icon_grey.png" alt="">
-                    <input type="text" value="{{user.Dateofbirth}}" name="Dateofbirth" placeholder="" f class="datepicker">
+                    <input type="text" value="{{user.Dateofbirth}}" name="Dateofbirth" placeholder="" required="" class="datepicker">
                   </div>
 
 
@@ -55,7 +55,7 @@
 
 
                   <div class="input-style-1 b-50 type-2 color-2">
-                    <select class="form-control" name="country" id="country">
+                    <select class="form-control" name="country" required="" id="country">
                       <option value="" selected="">Veuillez choisir votre pays</option>
                       {{!-- {{#if !user.country}} {{else}}
                       <option value={{user.country}} selected="">{{user.country}}</option>
@@ -65,14 +65,14 @@
                       <option value={{ this }}>{{ this }}</option>
                       {{!-- {{/if_eq}} --}} {{/each}}
                     </select>
-                    <input value="{{user.country}}" id="usercountry" name="usercountry" type="hidden">
+                    <input value="{{user.country}}" id="usercountry"  name="usercountry" type="hidden">
 
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="color-grey-8">Ville</label>
                   <div class="input-style-1 b-50 type-2 color-2">
-                    <select class="form-control" name="city" id="city">
+                    <select class="form-control" required="" name="city" id="city">
                       <option value="">Veuillez choisir votre ville</option>
                     </select>
                     <input value="{{user.city}}" id="usercity" name="usercity" type="hidden">

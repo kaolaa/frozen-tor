@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 var countries = require('full-countries-cities').getCountryNames();
 var cities = require('full-countries-cities');
-hbs.compile("{{clientToken}}", { noEscape: true });
+const nodemailer = require('nodemailer');
 
 // load user model
 require('./models/User');
@@ -25,7 +25,7 @@ require('./config/passport')(passport);
 const auth = require('./routes/auth');
 const account = require('./routes/account');
 const tour = require('./routes/tour');
-const routes = require('./routes/index');
+const index = require('./routes/index');
 
 
 //Load Keys
@@ -80,16 +80,16 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-hbs.registerHelper("math", function(lvalue, operator, rvalue, options) {
+hbs.registerHelper("math", function (lvalue, operator, rvalue, options) {
   lvalue = parseFloat(lvalue);
   rvalue = parseFloat(rvalue);
-      
+
   return {
-      "+": lvalue + rvalue,
-      "-": lvalue - rvalue,
-      "*": lvalue * rvalue,
-      "/": lvalue / rvalue,
-      "%": lvalue % rvalue
+    "+": lvalue + rvalue,
+    "-": lvalue - rvalue,
+    "*": lvalue * rvalue,
+    "/": lvalue / rvalue,
+    "%": lvalue % rvalue
   }[operator];
 });
 
@@ -100,50 +100,68 @@ hbs.registerHelper('trimString', function (passedString, start, end) {
 hbs.registerHelper('numbertomounth', function (string) {
   var nbr = parseInt(string.substring(0, 3));
   var month = "";
-    switch (nbr) {
-      case 1:
-        month = "Janvier";
-        break;
-      case 2:
-        month = "Fevrier";
-        break;
-      case 3:
-        month = "Mars";
-        break;
-      case 4:
-        month = "Avril";
-        break;
-      case 5:
-        month = "May";
-        break;
-      case 6:
-        month = "Juin";
-        break;
-      case 7:
-        month = "Juillet";
-        break;
-      case 8:
-        month = "Aout";
-        break;
-      case 9:
-        month = "Septembre";
-        break;
-      case 10:
-        month = "Octobre";
-        break;
-      case 11:
-        month = "Novembre";
-        break;
-      case 12:
-        month = "Decembre";
-        break;
-      default:
-        month = "Month error";
-        break;
-    }
-  
+  switch (nbr) {
+
+    case 1:
+      month = "Janvier";
+      break;
+    case 2:
+      month = "Fevrier";
+      break;
+    case 3:
+      month = "Mars";
+      break;
+    case 4:
+      month = "Avril";
+      break;
+    case 5:
+      month = "May";
+      break;
+    case 6:
+      month = "Juin";
+      break;
+    case 7:
+      month = "Juillet";
+      break;
+    case 8:
+      month = "Aout";
+      break;
+    case 9:
+      month = "Septembre";
+      break;
+    case 10:
+      month = "Octobre";
+      break;
+    case 11:
+      month = "Novembre";
+      break;
+    case 12:
+      month = "Decembre";
+      break;
+    default:
+      month = "Month error";
+      break;
+  }
+
 
   return month;
+});
+
+// helper to find the tour
+hbs.registerHelper('foundtravel', function (booking, travel, thetour) {
+  booking.forEach(bookingfound => {
+    travel.forEach(travelfound => {
+      if (bookingfound.TourID == travelfound.id) {
+        thetour = travelfound;
+        return true;
+      }
+    });
+  });
+  return false;
+});
+
+hbs.registerHelper('ifEquals', function (arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
 // Passport Middleware
 app.use(passport.initialize());
@@ -155,55 +173,28 @@ app.use(function (req, res, next) {
   next();
 });
 
-//index route
-app.get('/', (req, res) => {
-  const title = 'Hello '
-  res.render('index', { title: title }); //didn't really use it <yet>
-});
-
-
-
-app.get('/about', (req, res) => {
-  res.render('About');
-});
-
-// // catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//   var err = new Error('Not Found');
-
-//   err.status = 404;
-//   next(err);
-// });
 
 // // error handlers
 
-// // development error handler
+// development error handler
 // // will print stacktrace
 // if (app.get('env') === 'development') {
 //   app.use(function (err, req, res, next) { // eslint-disable-line no-unused-vars
 //     res.status(err.status || 500);
-//     res.render('error', {
+//     res.render('404', {
 //       message: err.message,
 //       error: err
 //     });
 //   });
 // }
 
-// // production error handler
-// // no stacktraces leaked to user
-// app.use(function (err, req, res, next) { // eslint-disable-line no-unused-vars
-//   res.status(err.status || 500);
-//   res.render('error', {
-//     message: err.message,
-//     error: {}
-//   });
-// });
+
 
 //Use Routes 
 app.use('/auth', auth);
 app.use('/account', account);
 app.use('/tour', tour);
-app.use('/index', routes);
+app.use('/', index);
 
 
 const port = process.env.PORT || 5000;

@@ -1,4 +1,4 @@
-{{> _header}} 
+{{> _header}}
 <!-- INNER-BANNER -->
 <div class="inner-banner style-6">
 	<img class="center-image" src="/img/detail/bg_5.jpg" alt="">
@@ -6,12 +6,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-md-8 col-md-offset-2">
-		  			<ul class="banner-breadcrumb color-white clearfix">
-		  				<li><a class="link-blue-2" href="#">home</a> /</li>
-		  				<li><span>thank you</span></li>
-		  			</ul>
-		  			<h2 class="color-white">thank you</h2>
-  				</div>
+					<ul class="banner-breadcrumb color-white clearfix">
+						<li>
+							<a class="link-blue-2" href="#">Acceuil</a> /</li>
+						<li>
+							<span>Reservation</span>
+						</li>
+					</ul>
+					<h2 class="color-white">Reservation reussi, Merci</h2>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -20,128 +23,116 @@
 <!-- DETAIL WRAPPER -->
 <div class="detail-wrapper">
 	<div class="container">
-       	<div class="row padd-90">
-       		<div class="col-xs-12 col-md-8">
+		<div class="row padd-90">
+			<div class="col-xs-12 col-md-8">
 				<div class="detail-content-block">
-					<h3 class="small-title">Booking Confirmation</h3>
+					<h3 class="small-title">Confirmation</h3>
 					<div class="confirm-label bg-dr-blue-2 radius-5">
 						<img class="confirm-img" src="/img/thx_icon.png" alt="">
-						<div class="confirm-title color-white">Thank You. Your Booking Order is Confirmed Now.</div>
-						<div class="confirm-text color-white-light">A confirmation email has been sent to your provided email address.</div>
-						<a href="#" class="confirm-print c-button b-40 bg-white hv-white-o">print details</a>
+						<div class="confirm-title color-white">Merci. Votre reservation a bien été effectué.</div>
+						<div class="confirm-text color-white-light">Un email de confirmation atterrira dans votre boite dans quelque instants.</div>
+						<a href="#" class="confirm-print c-button b-40 bg-white hv-white-o">Imprimer la facture</a>
 					</div>
 				</div>
 				<div class="detail-content-block">
-					<h3 class="small-title">Traveler Information</h3>
+					<h3 class="small-title">Informations du voyage</h3>
 					<div class="table-responsive">
-					    <table class="table style-1 type-2 striped">
-					      	<tbody>
-						        <tr>
-						          	<td class="table-label color-grey">Numéro de transaction</td>
-						          	<td class="table-label color-dark-2"><strong>{{transaction.id}}</strong></td>
-						        </tr>
-                    <tr>
-						          	<td class="table-label color-grey">Montant</td>
-						          	<td class="table-label color-dark-2"><strong>{{transaction.amount}}</strong></td>
-						        </tr>
-						        <tr>
-						          	<td class="table-label color-grey">Nom:</td>
-						          	<td class="table-label color-dark-2"><strong>{{user.FirstName}}</strong></td>
-						        </tr>
-						        <tr>
-						          	<td class="table-label color-grey">Prénom:</td>
-						          	<td class="table-label color-dark-2"><strong>{{user.LastName}}</strong></td>
-					        	</tr>
-						     
-						        <tr>
-						          	<td class="table-label color-grey">Email:</td>
-						          	<td class="table-label color-dark-2"><strong>{{user.email}}</strong></td>
-					        	</tr>
-						        <tr>
-						          	<td class="table-label color-grey">Adresse:</td>
-						          	<td class="table-label color-dark-2"><strong>{{user.city}},{{user.country}}</strong></td>
-					        	</tr>
-						        {{!-- <tr>
-						          	<td class="table-label color-grey">TOWN / CITY:</td>
-						          	<td class="table-label color-dark-2"><strong></strong></td>
-					        	</tr>
-						        <tr>
-						          	<td class="table-label color-grey">COUNTRY:</td>
-						          	<td class="table-label color-dark-2"><strong>UNITED STATES OF AMERICA</strong></td>
-					        	</tr>					        						        							        						        						        							        	 --}}
-					      	</tbody>
-					    </table>
-				    </div>					
+						<table class="table style-1 type-2 striped">
+							<tbody>
+								<tr>
+									<td class="table-label color-grey">Numéro de transaction</td>
+									<td class="table-label color-dark-2">
+										<strong>{{transaction.id}}</strong>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-label color-grey">Montant</td>
+									<td class="table-label color-dark-2">
+										<strong>{{transaction.amount}}</strong>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-label color-grey">Nom:</td>
+									<td class="table-label color-dark-2">
+										<strong>{{user.FirstName}}</strong>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-label color-grey">Prénom:</td>
+									<td class="table-label color-dark-2">
+										<strong>{{user.LastName}}</strong>
+									</td>
+								</tr>
+
+								<tr>
+									<td class="table-label color-grey">Email:</td>
+									<td class="table-label color-dark-2">
+										<strong>{{user.email}}</strong>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-label color-grey">Adresse:</td>
+									<td class="table-label color-dark-2">
+										<strong>{{user.city}},{{user.country}}</strong>
+									</td>
+								</tr>
+								{{!--
+								<tr>
+									<td class="table-label color-grey">TOWN / CITY:</td>
+									<td class="table-label color-dark-2">
+										<strong></strong>
+									</td>
+								</tr>
+								<tr>
+									<td class="table-label color-grey">COUNTRY:</td>
+									<td class="table-label color-dark-2">
+										<strong>UNITED STATES OF AMERICA</strong>
+									</td>
+								</tr> --}}
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div class="detail-content-block">
 					<div class="simple-text">
 						<h3>Payment</h3>
-						<p class="color-grey">Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus. Pellentesque ac turpis egestas, varius justo et, condimentum augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p class="color-grey">Pour bénéficier d'un remboursement intégral des frais de reservation, l'annulation doit intervenir 48 heures avant
+							l'heure locale d'arrivée indiquée sur l'annonce . Par exemple, si l'arrivée est prévue un vendredi, vous pouvez annuler
+							jusqu'à l'heure d'arrivée indiquée, le mercredi de la même semaine..</p>
 						<div class="custom-panel bg-grey-2 radius-4">
-							<a class="color-dr-blue-2 link-dark-2" href="#">Payment is made by {{transaction.creditCard.cardType}} Card Via Paypal.</a>
+							<a class="color-dr-blue-2 link-dark-2" href="#">Payment a été effectué par {{transaction.creditCard.cardType}} Card Via Paypal.</a>
 						</div>
 					</div>
 				</div>
 				<div class="detail-content-block">
 					<div class="simple-text">
-						<h3>View Booking Details</h3>
-						<p class="color-grey">Pellentesque ac turpis egestas, varius justo et, condimentum augue. Praesent aliquam, nisl feugiat vehicula condimentum, justo tellus scelerisque metus. Pellentesque ac turpis egestas, varius justo et, condimentum augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<h3>Voir les details de la reservation</h3>
+						<p class="color-grey">Une fois que votre réservation est confirmée, votre reçu et votre récapitulatif sont automatiquement édités et stockés
+							dans Mes voyages. Ils sont mis à jour si vous annulez votre réservation, modifiez votre réservation ou recevez un
+							remboursement.
+						</p>
 						<div class="custom-panel bg-grey-2 radius-4">
-							<a class="color-dr-blue-2 link-dark-2" href="#">https://www.letstravel.com/booking-details/?=f4acb19f-9542-4a5c-b8ee</a>
+							<a class="color-dr-blue-2 link-dark-2" href="#">https://localhost:5000/booking-details/?=f4acb19f-9542-4a5c-b8ee</a>
 						</div>
 					</div>
-				</div>									
-       		</div>
-       		<div class="col-xs-12 col-md-4">
-       			<div class="right-sidebar">
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<div class="right-sidebar">
 
-					<div class="popular-tours bg-grey-2">
-						<h4 class="color-dark-2">popular tours</h4>
-						<div class="hotel-small style-2 clearfix">
-							<a class="hotel-img black-hover" href="#">
-								<img class="img-responsive radius-0" src="img/home_9/cruise_1.jpg" alt="">
-								<div class="tour-layer delay-1"></div>        						
-							</a>
-							<div class="hotel-desc">
-		    					<h5><span class="color-dark-2"><strong>$273</strong>/ person</span></h5>
-		    					<h4>HAWAIAN CRUISES</h4>
-								<div class="hotel-loc tt"><strong>19.07 - 26.07 / 7</strong> nights</div>
-							</div>
-						</div>
-						<div class="hotel-small style-2 clearfix">
-							<a class="hotel-img black-hover" href="#">
-								<img class="img-responsive radius-0" src="img/home_9/cruise_2.jpg" alt="">
-								<div class="tour-layer delay-1"></div>        						
-							</a>
-							<div class="hotel-desc">
-		    					<h5><span class="color-dark-2"><strong>$273</strong>/ person</span></h5>
-		    					<h4>TAHITI CRUISES</h4>
-								<div class="hotel-loc tt"><strong>19.07 - 26.07 / 7</strong> nights</div>
-							</div>
-						</div>
-						<div class="hotel-small style-2 clearfix">
-							<a class="hotel-img black-hover" href="#">
-								<img class="img-responsive radius-0" src="img/home_9/cruise_3.jpg" alt="">
-								<div class="tour-layer delay-1"></div>        						
-							</a>
-							<div class="hotel-desc">
-		    					<h5><span class="color-dark-2"><strong>$273</strong>/ person</span></h5>
-		    					<h4>ASIA CRUISES</h4>
-								<div class="hotel-loc tt"><strong>19.07 - 26.07 / 7</strong> nights</div>
-							</div>
-						</div>											
-					</div>
 
-					<div class="sidebar-text-label bg-dr-blue-2 color-white">useful information</div>
+					<div class="sidebar-text-label bg-dr-blue-2 color-white">Informations utile </div>
 
 					<div class="help-contact bg-grey-2">
-						<h4 class="color-dark-2">Need Help?</h4>
-						<p class="color-grey-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<a class="help-phone color-dark-2 link-dr-blue-2" href="tel:0200059600"><img src="img/detail/phone24-dark-2.png" alt="">020 00 59 600</a>
-						<a class="help-mail color-dark-2 link-dr-blue-2" href="mailto:let’s_travel@world.com"><img src="img/detail/letter-dark-2.png" alt="">let’s_travel@world.com</a>
-					</div>										      				
-       			</div>       			
-       		</div>
-       	</div>
+						<h4 class="color-dark-2">Besoin d'aide?</h4>
+						<p class="color-grey-2">Nous sommes toujour a l'écoute.</p>
+						<a class="help-phone color-dark-2 link-dr-blue-2" href="tel:0200059600">
+							<img src="/img/detail/phone24-dark-2.png" alt="">+212 5 37 42 53 42</a>
+						<a class="help-mail color-dark-2 link-dr-blue-2" href="mailto:ikissgroup@gmail.com">
+							<img src="/img/detail/letter-dark-2.png" alt="">ikissgroup@gmail.com</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

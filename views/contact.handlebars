@@ -1,0 +1,123 @@
+{{> _header}} {{> _banner title='Contacter Nous'}}
+<div class="detail-wrapper">
+	{{> _msg}}{{> _errors}}
+	<!-- CONTACT-FORM -->
+	<div class="main-wraper padd-40">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8">
+					<form class="contact-form js-contact-form" action="/send" method="POST">
+						<div class="row">
+							<div class="col-xs-12 col-sm-6">
+								<div class="input-style-1 type-2 color-2">
+									<input type="text" name="name" required="" placeholder="Enter votre nom">
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="input-style-1 type-2 color-2">
+									<input type="email" name="email" required="" placeholder="Enter votre email">
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="input-style-1 type-2 color-2">
+									<input type="text" name="pays" required="" placeholder="Enter votre pays">
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="input-style-1 type-2 color-2">
+									<input type="text" name="phone" required="" placeholder="Enter votre telephone">
+								</div>
+							</div>
+							{{!-- <div class="col-xs-12 col-sm-6">
+								<div class="drop-wrap drop-wrap-s-3 color-2">
+									<div class="drop">
+										<b >type de message</b>
+										<a href="#" class="drop-list">
+											<i class="fa fa-angle-down"></i>
+										</a>
+										<span>
+											<a href="#">01 kids</a>
+											<a href="#">02 kids</a>
+											<a href="#">03 kids</a>
+											<a href="#">04 kids</a>
+											<a href="#">05 kids</a>
+										</span>
+									</div>
+								</div>
+							</div> --}}
+							<div class="col-xs-12">
+								<textarea class="area-style-1 color-1" name="message" required="" placeholder="Enter votre message"></textarea>
+								<button type="submit" class="c-button bg-dr-blue-2 hv-dr-blue-2-o">
+									<span>Envoyer</span>
+								</button>
+							</div>
+							<input type="hidden" name="fields[code]" value="56345678safs_">
+						</div>
+					</form>
+					<div class="ajax-result">
+						<div class="success"></div>
+						<div class="error"></div>
+					</div>
+					<div class="ajax-loader"></div>
+				</div>
+				<div class="col-xs-12 col-sm-4">
+					<div class="contact-about">
+						<h4 class="color-dark-2">
+							<strong>Nos informations</strong>
+						</h4>
+						<p class="color-grey-3">Nous somme toujour a votre ecoute.</p>
+					</div>
+					<div class="contact-info">
+						<h4 class="color-dark-2">
+							<strong>contact </strong>
+						</h4>
+						<div class="contact-line color-grey-3">
+							<img src="img/phone_icon_2_dark.png" alt="">Telephone:
+							<a class="color-dark-2" href="tel:93123456789">+212 5 37 42 53 42</a>
+						</div>
+						<div class="contact-line color-grey-3">
+							<img src="img/mail_icon_b_dark.png" alt="">Email:
+							<a class="color-dark-2 tt" href="#">ikissgroup@gmail.com</a>
+						</div>
+						<div class="contact-line color-grey-3">
+							<img src="img/loc_icon_dark.png" alt="">Address:
+							<span class="color-dark-2 tt">Maroc, Agadir</span>
+						</div>
+					</div>
+					<div class="contact-socail">
+						<a class="color-grey-3 link-dr-blue-2" href="#">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a class="color-grey-3 link-dr-blue-2" href="#">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a class="color-grey-3 link-dr-blue-2" href="#">
+							<i class="fa fa-skype"></i>
+						</a>
+						<a class="color-grey-3 link-dr-blue-2" href="#">
+							<i class="fa fa-google-plus"></i>
+						</a>
+						<a class="color-grey-3 link-dr-blue-2" href="#">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+						<a class="color-grey-3 link-dr-blue-2" href="#">
+							<i class="fa fa-instagram"></i>
+						</a>
+						<a class="color-grey-3 link-dr-blue-2" href="#">
+							<i class="fa fa-behance"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- MAP BLOCK -->
+<div class="map-block">
+	<div id="map-canvas" class="style-2" data-lat="33.664467" data-lng="-117.601586" data-zoom="10" data-style="2"></div>
+	<div class="addresses-block">
+		<a data-lat="33.664467" data-lng="-117.601586" data-string="Santa Monica Hotel"></a>
+	</div>
+</div>
